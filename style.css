@@ -1,80 +1,69 @@
-body {
 
+body {
     background-color: #000000;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-
 }
 
-.exam-container{
+.exam-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h1{
-    font-size: 3rem;
+h1 {
+    font-size: 2.5rem;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-.highlight{
-    color: #F1CB42 ;
+.highlight {
+    color: #F1CB42; /* Yellow */
 }
 
 .exam-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 50px;
+    margin: 20px 0;
 }
 
-.timer{
-    background-color:#6A7AFF;
+.timer {
+    background-color: #6A7AFF; /* Blue */
     padding: 10px 15px;
-    border-radius: 20px;
+    border-radius: 8px;
 }
 
-.progress-section{
+.progress-section {
     width: 60%;
-
-
 }
 
-.progress-container{
-
+.progress-container {
     background-color: #333;
     border-radius: 5px;
     height: 10px;
     overflow: hidden;
-    margin-bottom: 5px;
 }
 
-.progress-bar{
-    width: 10%;
+.progress-bar {
+    width: 0%;
     height: 100%;
-    background-color: #6A7AFF;
+    background-color: #6A7AFF; /* Blue */
 }
 
 .question-counter {
     text-align: right;
     font-size: 0.9rem;
+    margin-top: 5px;
 }
 
-/* Question styles */
 .question-card {
     background-color: #111;
     border-radius: 10px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .question-text {
@@ -86,7 +75,6 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
 }
 
 .option {
@@ -104,13 +92,6 @@ h1{
     background-color: #6A7AFF; /* Blue */
 }
 
-/* Footer styles */
-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-}
-
 button {
     background-color: #F1CB42; /* Yellow */
     color: #000000;
@@ -120,9 +101,31 @@ button {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    display: block;
+    margin: 20px auto;
 }
 
 button:disabled {
     background-color: #555;
     cursor: not-allowed;
+}
+
+.feedback {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #F1CB42; /* Yellow */
+    display: none;
+}
+
+.ai-feedback-btn {
+    background-color: transparent;
+    color: #F1CB42; /* Yellow */
+    border: 2px dashed #F1CB42;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
 }
