@@ -1,0 +1,142 @@
+[
+    {
+        "id": "sci_q1",
+        "text": "¿Cuál es la función principal del sistema respiratorio?",
+        "options": ["Transportar nutrientes", "Bombear sangre", "Intercambiar gases", "Controlar el movimiento"],
+        "correctAnswer": 2,
+        "defaultFeedback": "El sistema respiratorio permite el intercambio de oxígeno y dióxido de carbono."
+    },
+    {
+        "id": "sci_q2",
+        "text": "¿Cuál es la unidad básica de la vida?",
+        "options": ["Tejido", "Célula", "Órgano", "Molécula"],
+        "correctAnswer": 1,
+        "defaultFeedback": "La célula es la unidad estructural y funcional básica de los seres vivos."
+    },
+    {
+        "id": "sci_q3",
+        "text": "¿Qué planeta del sistema solar es conocido como el planeta rojo?",
+        "options": ["Júpiter", "Saturno", "Marte", "Venus"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Marte es conocido como el planeta rojo por el óxido de hierro en su superficie."
+    },
+    {
+        "id": "sci_q4",
+        "text": "¿Qué tipo de cambio ocurre al hervir el agua?",
+        "options": ["Cambio químico", "Cambio atómico", "Cambio físico", "Cambio genético"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Hervir el agua es un cambio físico: cambia de estado pero no de composición."
+    },
+    {
+        "id": "sci_q5",
+        "text": "¿Cuál de los siguientes elementos es un metal?",
+        "options": ["Oxígeno", "Azufre", "Hierro", "Cloro"],
+        "correctAnswer": 2,
+        "defaultFeedback": "El hierro es un metal sólido, buen conductor del calor y electricidad."
+    },
+    {
+        "id": "sci_q6",
+        "text": "¿Qué órgano humano es responsable de bombear la sangre?",
+        "options": ["Pulmón", "Estómago", "Hígado", "Corazón"],
+        "correctAnswer": 3,
+        "defaultFeedback": "El corazón bombea sangre a todo el cuerpo."
+    },
+    {
+        "id": "sci_q7",
+        "text": "¿Qué forma tiene la órbita de los planetas?",
+        "options": ["Circular", "Elíptica", "Cuadrada", "Recta"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Las órbitas planetarias son elípticas según las leyes de Kepler."
+    },
+    {
+        "id": "sci_q8",
+        "text": "¿Qué gas es esencial para la respiración celular?",
+        "options": ["Dióxido de carbono", "Oxígeno", "Hidrógeno", "Nitrógeno"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Las células usan oxígeno para obtener energía a partir de la glucosa."
+    },
+    {
+        "id": "sci_q9",
+        "text": "¿Cuál es la fórmula química del agua?",
+        "options": ["HO₂", "H₂O", "O₂H", "OH₂"],
+        "correctAnswer": 1,
+        "defaultFeedback": "El agua está compuesta por dos átomos de hidrógeno y uno de oxígeno: H₂O."
+    },
+    {
+        "id": "sci_q10",
+        "text": "¿Cómo se llama el proceso mediante el cual las plantas producen su alimento?",
+        "options": ["Respiración", "Digestión", "Fotosíntesis", "Fermentación"],
+        "correctAnswer": 2,
+        "defaultFeedback": "La fotosíntesis convierte la luz solar en energía química."
+    },
+    {
+        "id": "sci_q11",
+        "text": "¿Qué órgano se encarga de filtrar la sangre y producir orina?",
+        "options": ["Hígado", "Riñón", "Intestino", "Pulmón"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Los riñones filtran desechos de la sangre y producen orina."
+    },
+    {
+        "id": "sci_q12",
+        "text": "¿Qué tipo de energía se libera en una reacción nuclear?",
+        "options": ["Cinética", "Térmica", "Nuclear", "Solar"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Las reacciones nucleares liberan energía nuclear, proveniente del núcleo atómico."
+    },
+    {
+        "id": "sci_q13",
+        "text": "¿Qué órgano del cuerpo humano controla las funciones del sistema nervioso?",
+        "options": ["Corazón", "Cerebro", "Pulmón", "Estómago"],
+        "correctAnswer": 1,
+        "defaultFeedback": "El cerebro regula y coordina las funciones corporales a través del sistema nervioso."
+    },
+    {
+        "id": "sci_q14",
+        "text": "¿Cuál de los siguientes es un estado de la materia?",
+        "options": ["Masa", "Energía", "Gas", "Peso"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Los estados de la materia son sólido, líquido, gas y plasma."
+    },
+    {
+        "id": "sci_q15",
+        "text": "¿Cuál es la función principal de los glóbulos blancos?",
+        "options": ["Transportar oxígeno", "Coagular la sangre", "Defender el cuerpo", "Regular la temperatura"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Los glóbulos blancos defienden el cuerpo contra infecciones."
+    },
+    {
+        "id": "sci_q16",
+        "text": "¿Qué nombre recibe el ciclo donde el agua se evapora, condensa y precipita?",
+        "options": ["Ciclo del carbono", "Ciclo del agua", "Fotosíntesis", "Ciclo lunar"],
+        "correctAnswer": 1,
+        "defaultFeedback": "El ciclo del agua describe el movimiento del agua a través de la atmósfera y la tierra."
+    },
+    {
+        "id": "sci_q17",
+        "text": "¿Qué fuerza mantiene a los planetas en órbita alrededor del Sol?",
+        "options": ["Magnetismo", "Fuerza centrífuga", "Fuerza eléctrica", "Gravedad"],
+        "correctAnswer": 3,
+        "defaultFeedback": "La gravedad mantiene a los cuerpos celestes en órbita."
+    },
+    {
+        "id": "sci_q18",
+        "text": "¿Cuál es la velocidad de la luz en el vacío?",
+        "options": ["300 mil m/s", "300 mil km/s", "150 mil km/s", "1 millón km/s"],
+        "correctAnswer": 1,
+        "defaultFeedback": "La luz viaja a aproximadamente 300,000 km/s en el vacío."
+    },
+    {
+        "id": "sci_q19",
+        "text": "¿Qué nombre recibe la unión de dos o más elementos?",
+        "options": ["Átomo", "Mezcla", "Molécula", "Reacción"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Una molécula es la combinación de dos o más átomos unidos químicamente."
+    },
+    {
+        "id": "sci_q20",
+        "text": "¿Qué tipo de energía utiliza una planta para realizar la fotosíntesis?",
+        "options": ["Química", "Solar", "Cinética", "Eléctrica"],
+        "correctAnswer": 1,
+        "defaultFeedback": "La fotosíntesis utiliza la energía solar para sintetizar compuestos."
+    }
+]

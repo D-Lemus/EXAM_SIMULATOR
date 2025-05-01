@@ -1,0 +1,142 @@
+[
+    {
+        "id": "lang_q1",
+        "text": "¿Cuál es el sinónimo de \"felicidad\"?",
+        "options": ["Tristeza", "Alegría", "Dolor", "Enojo"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Alegría es sinónimo de felicidad."
+    },
+    {
+        "id": "lang_q2",
+        "text": "¿Cuál es el antónimo de \"oscuro\"?",
+        "options": ["Sombrío", "Claro", "Tenebroso", "Negro"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Claro es lo contrario de oscuro."
+    },
+    {
+        "id": "lang_q3",
+        "text": "Selecciona la palabra correctamente escrita:",
+        "options": ["Escepción", "Exepción", "Excepción", "Essepcción"],
+        "correctAnswer": 2,
+        "defaultFeedback": "La forma correcta es \"Excepción\"."
+    },
+    {
+        "id": "lang_q4",
+        "text": "¿Qué tipo de palabra es \"rápidamente\"?",
+        "options": ["Adjetivo", "Sustantivo", "Verbo", "Adverbio"],
+        "correctAnswer": 3,
+        "defaultFeedback": "\"Rápidamente\" es un adverbio de modo."
+    },
+    {
+        "id": "lang_q5",
+        "text": "¿Cuál es el sujeto en la oración: \"El perro ladra fuerte\"?",
+        "options": ["El", "ladra", "El perro", "ladra fuerte"],
+        "correctAnswer": 2,
+        "defaultFeedback": "El sujeto es \"El perro\"."
+    },
+    {
+        "id": "lang_q6",
+        "text": "¿Qué palabra completa correctamente la oración: \"____ voy al cine\"?",
+        "options": ["Vámos", "Vamos", "Bamos", "Vamoz"],
+        "correctAnswer": 1,
+        "defaultFeedback": "La forma correcta es \"Vamos\"."
+    },
+    {
+        "id": "lang_q7",
+        "text": "¿Qué significa la palabra \"benevolente\"?",
+        "options": ["Malicioso", "Generoso", "Violento", "Indiferente"],
+        "correctAnswer": 1,
+        "defaultFeedback": "\"Benevolente\" significa generoso o bondadoso."
+    },
+    {
+        "id": "lang_q8",
+        "text": "Selecciona la opción con todas las palabras agudas:",
+        "options": ["Corazón, café, árbol", "Camión, sofá, papel", "Lápiz, difícil, fácil", "Silla, casa, coche"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Las agudas llevan tilde si terminan en n, s o vocal. Camión, sofá y papel son agudas."
+    },
+    {
+        "id": "lang_q9",
+        "text": "¿Cuál es una característica de las oraciones interrogativas?",
+        "options": ["Terminan con punto", "Usan signos de interrogación", "Describen acciones", "Expresan órdenes"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Las oraciones interrogativas usan signos de interrogación."
+    },
+    {
+        "id": "lang_q10",
+        "text": "¿Qué tipo de texto es una receta de cocina?",
+        "options": ["Narrativo", "Descriptivo", "Expositivo", "Instructivo"],
+        "correctAnswer": 3,
+        "defaultFeedback": "Una receta es un texto instructivo."
+    },
+    {
+        "id": "lang_q11",
+        "text": "¿Cuál de estas palabras es un sustantivo abstracto?",
+        "options": ["Mesa", "Belleza", "Silla", "Libro"],
+        "correctAnswer": 1,
+        "defaultFeedback": "Belleza es un sustantivo abstracto."
+    },
+    {
+        "id": "lang_q12",
+        "text": "¿Cuál es el plural de \"papá\"?",
+        "options": ["Papas", "Papás", "Papáes", "Papases"],
+        "correctAnswer": 1,
+        "defaultFeedback": "El plural correcto de papá es papás."
+    },
+    {
+        "id": "lang_q13",
+        "text": "¿Qué signo de puntuación se usa para separar elementos en una lista?",
+        "options": ["Punto y coma", "Dos puntos", "Coma", "Paréntesis"],
+        "correctAnswer": 2,
+        "defaultFeedback": "Se usa la coma para separar elementos de una lista."
+    },
+    {
+        "id": "lang_q14",
+        "text": "¿Cuál es la forma correcta del verbo en la oración: \"Mañana ellos ____ al parque\"?",
+        "options": ["irán", "irían", "van", "fueron"],
+        "correctAnswer": 0,
+        "defaultFeedback": "\"Irán\" está en futuro simple, adecuado para \"mañana\"."
+    },
+    {
+        "id": "lang_q15",
+        "text": "¿Cuál es la forma correcta de \"haber\" en la oración: \"Debe ____ más opciones\"?",
+        "options": ["haber", "aver", "a ver", "abér"],
+        "correctAnswer": 0,
+        "defaultFeedback": "\"Haber\" es el verbo correcto en este contexto."
+    },
+    {
+        "id": "lang_q16",
+        "text": "¿Qué tipo de texto busca convencer al lector?",
+        "options": ["Narrativo", "Descriptivo", "Argumentativo", "Expositivo"],
+        "correctAnswer": 2,
+        "defaultFeedback": "El texto argumentativo intenta persuadir o convencer."
+    },
+    {
+        "id": "lang_q17",
+        "text": "¿Cuál es el antónimo de \"valiente\"?",
+        "options": ["Heroico", "Temeroso", "Osado", "Intrépido"],
+        "correctAnswer": 1,
+        "defaultFeedback": "\"Temeroso\" es lo contrario de \"valiente\"."
+    },
+    {
+        "id": "lang_q18",
+        "text": "¿Cuál es la función del punto y coma (;) en un texto?",
+        "options": ["Finalizar una oración", "Unir ideas opuestas", "Separar oraciones relacionadas", "Indicar duda"],
+        "correctAnswer": 2,
+        "defaultFeedback": "El punto y coma separa oraciones relacionadas."
+    },
+    {
+        "id": "lang_q19",
+        "text": "¿Cuál palabra tiene un error ortográfico?",
+        "options": ["Correré", "Cansancio", "Vasío", "Gritó"],
+        "correctAnswer": 2,
+        "defaultFeedback": "\"Vasío\" está mal escrito, lo correcto es \"Vacío\"."
+    },
+    {
+        "id": "lang_q20",
+        "text": "¿Cuál es la forma correcta de acentuación para \"limite\"?",
+        "options": ["limité", "limite", "límité", "límite"],
+        "correctAnswer": 3,
+        "defaultFeedback": "La palabra correcta es \"límite\", con tilde en la primera sílaba."
+    }
+]

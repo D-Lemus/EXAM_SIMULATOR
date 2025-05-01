@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UABC Entrance Exam</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
     <div class="exam-container">
@@ -34,374 +35,42 @@
         </footer>
     </div>
 
-    <script>
-        // Wait for the page to load completely
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sample questions
-            const examQuestions = [
-                {
-                    id: 'q1',
-                    text: 'What is the capital of Mexico?',
-                    options: [
-                        'Guadalajara',
-                        'Mexico City',
-                        'Monterrey',
-                        'Tijuana'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'Mexico City (Ciudad de México) is the capital of Mexico.'
-                },
-                {
-                    id: 'q2',
-                    text: 'Solve for x: 2x + 5 = 15',
-                    options: [
-                        'x = 5',
-                        'x = 6',
-                        'x = 7',
-                        'x = 10'
-                    ],
-                    correctAnswer: 0,
-                    defaultFeedback: 'To solve for x, subtract 5 from both sides: 2x = 10, then divide by 2: x = 5.'
-                },
-                {
-                    id: 'q3',
-                    text: '¿Cuál es el sinónimo de “efímero”?',
-                    options: [
-                        'Eterno',
-                        'Breve',
-                        'Oscuro',
-                        'Rígido'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: '“Efímero” significa algo breve o de corta duración.'
-                },
-                {
-                    id: 'q4',
-                    text: '¿Cuál es el resultado de 3² + 4²?',
-                    options: [
-                        '25',
-                        '12',
-                        '7',
-                        '18'
-                    ],
-                    correctAnswer: 0,
-                    defaultFeedback: '3² = 9 y 4² = 16. La suma es 9 + 16 = 25.'
-                },
-                {
-                    id: 'q5',
-                    text: '¿En qué año comenzó la Revolución Mexicana?',
-                    options: [
-                        '1910',
-                        '1810',
-                        '1847',
-                        '1920'
-                    ],
-                    correctAnswer: 0,
-                    defaultFeedback: 'La Revolución Mexicana comenzó en 1910 con el llamado de Francisco I. Madero.'
-                },
-                {
-                    id: 'q6',
-                    text: '¿Cuál de los siguientes elementos es un metal alcalino?',
-                    options: [
-                        'Calcio',
-                        'Potasio',
-                        'Aluminio',
-                        'Oxígeno'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'El potasio es un metal alcalino, ubicado en el grupo 1 de la tabla periódica.'
-                },
-                {
-                    id: 'q7',
-                    text: '¿Qué número sigue en la serie? 2, 4, 8, 16, ...',
-                    options: [
-                        '18',
-                        '20',
-                        '32',
-                        '24'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'La serie multiplica por 2: 2, 4, 8, 16, 32.'
-                },
-                {
-                    id: 'q8',
-                    text: '¿Qué figura literaria se utiliza en “Sus ojos eran dos luceros”?',
-                    options: [
-                        'Metáfora',
-                        'Hipérbole',
-                        'Anáfora',
-                        'Ironía'
-                    ],
-                    correctAnswer: 0,
-                    defaultFeedback: 'La metáfora compara dos cosas sin usar “como”: ojos = luceros.'
-                },
-                {
-                    id: 'q9',
-                    text: '¿Cuál es el valor de x en la ecuación: x/3 = 9?',
-                    options: [
-                        'x = 12',
-                        'x = 18',
-                        'x = 27',
-                        'x = 3'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'Multiplicamos ambos lados por 3: x = 9 × 3 = 27.'
-                },
-                {
-                    id: 'q10',
-                    text: '¿Cuál es el sujeto en la oración: “El perro negro duerme en el sillón”?',
-                    options: [
-                        'duerme',
-                        'en el sillón',
-                        'El perro negro',
-                        'sillón'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'El sujeto es “El perro negro”, quien realiza la acción.'
-                },
-                {
-                    id: 'q11',
-                    text: '¿Qué país limita con México al norte?',
-                    options: [
-                        'Guatemala',
-                        'Estados Unidos',
-                        'Canadá',
-                        'Belice'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'Estados Unidos limita con México al norte.'
-                },
-                {
-                    id: 'q12',
-                    text: '¿Qué nombre recibe el proceso por el cual las plantas fabrican su alimento?',
-                    options: [
-                        'Digestión',
-                        'Evaporación',
-                        'Fotosíntesis',
-                        'Fermentación'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'La fotosíntesis es el proceso mediante el cual las plantas producen su alimento.'
-                },
-                {
-                    id: 'q13',
-                    text: '¿Cuál es el área de un triángulo con base 10 cm y altura 6 cm?',
-                    options: [
-                        '60 cm²',
-                        '30 cm²',
-                        '16 cm²',
-                        '40 cm²'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'Área = (base × altura) / 2 = (10 × 6)/2 = 30 cm².'
-                },
-                {
-                    id: 'q14',
-                    text: '¿Qué palabra está mal escrita?',
-                    options: [
-                        'Examen',
-                        'Cirujía',
-                        'Problema',
-                        'Médico'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'La palabra correcta es “cirugía”, no “cirujía”.'
-                },
-                {
-                    id: 'q15',
-                    text: '¿Cuál es el resultado de |−7|?',
-                    options: [
-                        '−7',
-                        '0',
-                        '7',
-                        '14'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'El valor absoluto de −7 es 7.'
-                },
-                {
-                    id: 'q16',
-                    text: '¿Cuál fue el último imperio mesoamericano antes de la llegada de los españoles?',
-                    options: [
-                        'Olmeca',
-                        'Tolteca',
-                        'Maya',
-                        'Azteca'
-                    ],
-                    correctAnswer: 3,
-                    defaultFeedback: 'El Imperio Azteca fue el último gran imperio antes de la conquista.'
-                },
-                {
-                    id: 'q17',
-                    text: '¿Qué función gramatical cumple la palabra “rápidamente” en la oración: “El niño corrió rápidamente”?',
-                    options: [
-                        'Adjetivo',
-                        'Sustantivo',
-                        'Adverbio',
-                        'Verbo'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: '“Rápidamente” es un adverbio que modifica al verbo “corrió”.'
-                },
-                {
-                    id: 'q18',
-                    text: 'Si un auto viaja a 60 km/h, ¿cuánto tiempo tarda en recorrer 180 km?',
-                    options: [
-                        '2 horas',
-                        '3 horas',
-                        '4 horas',
-                        '5 horas'
-                    ],
-                    correctAnswer: 1,
-                    defaultFeedback: 'Tiempo = distancia / velocidad = 180 / 60 = 3 horas.'
-                },
-                {
-                    id: 'q19',
-                    text: '¿Qué opción representa un oxímoron?',
-                    options: [
-                        'Silencio ensordecedor',
-                        'Noche estrellada',
-                        'Llanto amargo',
-                        'Camino largo'
-                    ],
-                    correctAnswer: 0,
-                    defaultFeedback: 'Un oxímoron une conceptos opuestos, como “silencio ensordecedor”.'
-                },
-                {
-                    id: 'q20',
-                    text: '¿Cuál es la raíz cuadrada de 144?',
-                    options: [
-                        '10',
-                        '11',
-                        '12',
-                        '13'
-                    ],
-                    correctAnswer: 2,
-                    defaultFeedback: 'La raíz cuadrada de 144 es 12, ya que 12 × 12 = 144.'
-                }
-                ];
+    <!--Side bar-->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
 
-            // Track user answers
-            let userAnswers = {};
+    <div class="sidebar" id="sidebar">
+        <a href="exam.html" class="user-btn">US</a>
+        <div class="divider"></div>
+        <a href="Examen_mate.html" class="exam-btn math-btn">📐𝙀𝙭𝙖𝙢𝙚𝙣 𝙙𝙚 𝙢𝙖𝙩𝙚𝙢𝙖𝙩𝙞𝙘𝙖𝙨</a>
+        <a href="Examen_Lenguaje.html" class="exam-btn language-btn">📖𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗹𝗲𝗻𝗴𝘂𝗮𝗷𝗲</a>
+        <a href="Examen_Ciencias.html" class="exam-btn science-btn">🧪𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗰𝗶𝗲𝗻𝗰𝗶𝗮𝘀</a>
+    </div>
+
+    <!--Logic of the side bar-->
+    <script>
+     const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('shifted');
             
-            // Load questions
-            const examContent = document.getElementById('exam-content');
-            document.getElementById('question-total').textContent = examQuestions.length;
-            
-            // Generate HTML for each question
-            examQuestions.forEach((question, index) => {
-                const questionCard = document.createElement('div');
-                questionCard.className = 'question-card';
-                questionCard.id = 'question-' + question.id;
-                
-                // Create options HTML
-                let optionsHTML = '';
-                question.options.forEach((option, optIndex) => {
-                    optionsHTML += `
-                        <div class="option" data-question="${question.id}" data-option="${optIndex}">
-                            ${option}
-                        </div>
-                    `;
-                });
-                
-                // Build the full question card HTML
-                questionCard.innerHTML = `
-                    <div class="question-text">${index + 1}. ${question.text}</div>
-                    <div class="options-list">
-                        ${optionsHTML}
-                    </div>
-                    <div class="feedback" id="feedback-${question.id}">
-                        ${question.defaultFeedback}
-                    </div>
-                    <button class="ai-feedback-btn" id="ai-btn-${question.id}">
-                        Didn't understand? Get AI explanation
-                    </button>
-                `;
-                
-                examContent.appendChild(questionCard);
-            });
-            
-            // Add click events to all options
-            const options = document.querySelectorAll('.option');
-            options.forEach(option => {
-                option.addEventListener('click', function() {
-                    const questionId = this.dataset.question;
-                    const optionIndex = parseInt(this.dataset.option);
-                    
-                    // Remove 'selected' class from all options in this question
-                    const questionOptions = document.querySelectorAll(`.option[data-question="${questionId}"]`);
-                    questionOptions.forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add 'selected' class to clicked option
-                    this.classList.add('selected');
-                    
-                    // Save the answer
-                    userAnswers[questionId] = optionIndex;
-                    
-                    // Update progress
-                    const answeredCount = Object.keys(userAnswers).length;
-                    const totalQuestions = examQuestions.length;
-                    
-                    // Update counter and progress bar
-                    document.getElementById('questions-answered').textContent = answeredCount;
-                    const progressPercentage = (answeredCount / totalQuestions) * 100;
-                    document.getElementById('progress-bar').style.width = progressPercentage + '%';
-                    
-                    // Enable submit button if all questions are answered
-                    document.getElementById('submit-btn').disabled = !(answeredCount === totalQuestions);
-                });
-            });
-            
-            // Add event listener for submit button
-            document.getElementById('submit-btn').addEventListener('click', function() {
-                // Calculate score
-                let score = 0;
-                
-                examQuestions.forEach(question => {
-                    if (userAnswers[question.id] === question.correctAnswer) {
-                        score++;
-                    }
-                });
-                
-                // Display results
-                alert(`Exam submitted! Your score: ${score}/${examQuestions.length}`);
-                
-                // Show feedback for each question
-                examQuestions.forEach(question => {
-                    const feedbackElement = document.getElementById(`feedback-${question.id}`);
-                    const aiButton = document.getElementById(`ai-btn-${question.id}`);
-                    
-                    // Show the feedback
-                    feedbackElement.style.display = 'block';
-                    aiButton.style.display = 'block';
-                });
-            });
-            
-            // Start timer
-            let timeLeft = 60 * 60; // 60 minutes
-            const timerElement = document.getElementById('time-remaining');
-            
-            const timerInterval = setInterval(() => {
-                // Calculate minutes and seconds
-                const minutes = Math.floor(timeLeft / 60);
-                const seconds = timeLeft % 60;
-                
-                // Update the display
-                timerElement.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
-                
-                // Decrease time left
-                timeLeft--;
-                
-                // Check if timer has finished
-                if (timeLeft < 0) {
-                    clearInterval(timerInterval);
-                    timerElement.textContent = '0:00';
-                    alert('Time is up! Submitting exam...');
-                }
-            }, 1000);
+            // Cambiar el ícono del botón
+            if (sidebar.classList.contains('active')) {
+                sidebarToggle.innerHTML = '✕';
+                sidebarToggle.style.left = '260px'; // Mover el botón con el sidebar
+            } else {
+                sidebarToggle.innerHTML = '☰';
+                sidebarToggle.style.left = '10px';
+            }
         });
+        </script>
+
+        <!--Logic and charge of the questions-->
+    <script>
+        const examJsonPath = 'jsons/Lenguage_questions.json';
     </script>
+    <script src="questions.js"></script>
 </body>
 </html>

@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  left: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 60px;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #1e1e1e;
+  position: fixed;
+  left: -250px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  z-index: 90;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.user-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 25px;
+}
+
+/* Estilos base para todos los botones */
+.exam-btn {
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  padding-left: 20px;
+  position: relative;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+/* Estilos específicos para cada tipo de examen */
+.math-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+  border-left: 5px solid #e74c3c;
+}
+
+.language-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-left: 5px solid #f1c40f;
+}
+
+.science-btn {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  border-left: 5px solid #3498db;
+}
+
+/* Efectos hover para cada botón */
+.math-btn:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.language-btn:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.science-btn:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+}
+
+/* Iconos para cada botón */
+.exam-btn::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.math-btn::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm5 2h2v3h3v2h-3v3h-2v-3H8v-2h3V8z"/></svg>');
+}
+
+.language-btn::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1 17.931V17h-3v-2h3v-2H6.639A7.947 7.947 0 0 1 5 12c0-.34.028-.675.082-1h4.916v-1H5.062A7.93 7.93 0 0 1 6.255 7H11V5h2v2h4.745c.677 1.177 1.11 2.503 1.203 3.969H13v1h4.918c.054.325.082.66.082 1 0 1.02-.196 1.994-.551 2.888H11v2.931z"/></svg>');
+}
+
+.science-btn::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M8.5 15H10v-1.5h1V12h-1V9H8.5v3H7V9H5.5v3H4v1.5h1.5V15zm7 4.5h3v-1.5H16v-6h1.5v4.5h3V15h-6zm0-6h3v-1.5h-3z"/></svg>');
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 0;
+  transition: all 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: 250px;
+}
