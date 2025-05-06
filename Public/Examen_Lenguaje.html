@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UABC Entrance Exam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="exam-container">
+        <header>
+            <h1>UABC <span class="highlight">ENTRANCE</span> EXAM</h1>
+            
+            <div class="exam-info">
+                <div class="timer">Time remaining: <span id="time-remaining">60:00</span></div>
+                
+                <div class="progress-section">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="question-counter">
+                        Question: <span id="questions-answered">0</span>/<span id="question-total">100</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main id="exam-content">
+            <!-- Questions will be loaded here -->
+        </main>
+        
+        <footer>
+            <button id="submit-btn" disabled>SUBMIT EXAM</button>
+        </footer>
+    </div>
+
+    <!--Side bar-->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <div class="sidebar" id="sidebar">
+        <a href="exam.html" class="user-btn">US</a>
+        <div class="divider"></div>
+        <a href="Examen_mate.html" class="exam-btn math-btn">📐𝙀𝙭𝙖𝙢𝙚𝙣 𝙙𝙚 𝙢𝙖𝙩𝙚𝙢𝙖𝙩𝙞𝙘𝙖𝙨</a>
+        <a href="Examen_Lenguaje.html" class="exam-btn language-btn">📖𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗹𝗲𝗻𝗴𝘂𝗮𝗷𝗲</a>
+        <a href="Examen_Ciencias.html" class="exam-btn science-btn">🧪𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗰𝗶𝗲𝗻𝗰𝗶𝗮𝘀</a>
+    </div>
+
+    <!--Logic of the side bar-->
+    <script>
+     const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('shifted');
+            
+            // Cambiar el ícono del botón
+            if (sidebar.classList.contains('active')) {
+                sidebarToggle.innerHTML = '✕';
+                sidebarToggle.style.left = '260px'; // Mover el botón con el sidebar
+            } else {
+                sidebarToggle.innerHTML = '☰';
+                sidebarToggle.style.left = '10px';
+            }
+        });
+        </script>
+
+        <!--Logic and charge of the questions-->
+    <script>
+        const examJsonPath = 'jsons/Lenguage_questions.json';
+    </script>
+    <script src="questions.js"></script>
+</body>
+</html>
