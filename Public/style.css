@@ -162,66 +162,51 @@ body {
 }
 
 /* ===== PROGRESS SECTION STYLES ===== */
-.progress-section {
+.progress-container {
     width: 100%;
     max-width: 800px;
-    margin-bottom: 30px;
+    margin-bottom: 50px !important; /* Increased margin to be obvious */
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.progress-header {
+.progress-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
 }
 
-.progress-label {
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-}
-
-.progress-icon {
-    font-size: 24px;
+.subject-icon {
+    font-size: 22px;
     margin-right: 10px;
 }
 
-.progress-percentage {
-    font-size: 18px;
+.progress-percent {
     font-weight: bold;
 }
 
-.progress-container {
+.progress-bar {
     width: 100%;
     height: 25px;
     background-color: #2d2d2d;
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.progress-bar {
+.progress-fill {
     height: 100%;
     border-radius: 12px;
     position: relative;
+    transition: width 0.5s ease;
 }
 
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.2) 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    border-radius: 12px;
-}
-
+/* Progress Fill Colors */
 .math-progress {
     background: linear-gradient(90deg, #3498db, #2c3e50);
     width: 65%;
@@ -242,19 +227,65 @@ body {
     width: 63%;
 }
 
-.total-section {
+/* Total Container Specific Styles */
+.total-container {
     margin-top: 40px;
-    padding-top: 20px;
     border-top: 2px solid #333;
+    padding-top: 20px;
 }
 
-.total-label {
+.total-title {
     color: #f39c12;
     font-weight: bold;
 }
 
-.total-percentage {
+.total-percent {
     color: #f39c12;
+}
+
+/* Progress Fill Percentage Display */
+.progress-fill-percent {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    font-size: 14px;
+}
+
+/* Improved Transition Effects */
+.progress-fill:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 12px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .progress-container {
+        padding: 10px;
+        margin-bottom: 30px !important;
+    }
+    
+    .progress-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .progress-percent {
+        margin-top: 5px;
+    }
 }
 
 /* ===== EXAM CONTAINER STYLES ===== */
@@ -347,9 +378,9 @@ button:disabled {
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
-    .progress-section {
+    /*.progress-section {
         padding: 0 10px;
-    }
+    }*/
     
     .progress-header {
         flex-direction: column;
@@ -367,4 +398,53 @@ button:disabled {
     .timer {
         margin-bottom: 10px;
     }
+}
+
+
+/* AI Tutor specific styles */
+.ai-response-container {
+    margin-top: 15px;
+    display: none;
+}
+
+.ai-feedback-btn {
+    background-color: transparent;
+    color: #F1CB42; /* Yellow */
+    border: 2px dashed #F1CB42;
+    padding: 8px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
+    font-size: 0.9rem;
+}
+
+.ai-feedback-btn:hover {
+    background-color: rgba(241, 203, 66, 0.1);
+}
+
+.loading {
+    padding: 10px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.error {
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-left: 4px solid #ff0000;
+    color: #ff6666;
+    border-radius: 4px;
+}
+
+/* AI Tutor explanation styles */
+.ai-response-container h4 {
+    margin-bottom: 10px;
+    color: #F1CB42;
+}
+
+.ai-response-container p {
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
