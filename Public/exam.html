@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UABC Entrance Exam</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
-    
-
-    <!--Side bar-->
     <button class="sidebar-toggle" id="sidebarToggle">☰</button>
 
     <div class="sidebar" id="sidebar">
         <a href="exam.html" class="user-btn">US</a>
         <div class="divider"></div>
+        <a href="/" class="exam-btn home-btn">🏠 Página Principal</a>
         <a href="Examen_mate.html" class="exam-btn math-btn">📐𝙀𝙭𝙖𝙢𝙚𝙣 𝙙𝙚 𝙢𝙖𝙩𝙚𝙢𝙖𝙩𝙞𝙘𝙖𝙨</a>
         <a href="Examen_Lenguaje.html" class="exam-btn language-btn">📖𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗹𝗲𝗻𝗴𝘂𝗮𝗷𝗲</a>
         <a href="Examen_Ciencias.html" class="exam-btn science-btn">🧪𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗰𝗶𝗲𝗻𝗰𝗶𝗮𝘀</a>
     </div>
+    
     <!--Logic of the side bar-->
     <script>
-     const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('mainContent');
 
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
-            mainContent.classList.toggle('shifted');
+            if (mainContent) mainContent.classList.toggle('shifted');
             
             // Cambiar el ícono del botón
             if (sidebar.classList.contains('active')) {
@@ -39,66 +37,86 @@
                 sidebarToggle.style.left = '10px';
             }
         });
-        </script>
+    </script>
         
-        <div class="user-profile">
-            <div class="user-avatar">US</div>
-            <div class="user-name">Usuario Estudiante</div>
-            <div class="user-email">usuario@ejemplo.com</div>
-        </div>
+    <div class="user-profile">
+        <div class="user-avatar" id="userAvatar">US</div>
+        <div class="user-name">Usuario Estudiante</div>
+        <div class="user-email">usuario@ejemplo.com</div>
+    </div>
     
-        <div class="progress-container">
-            <div class="progress-title">
-                <span>
-                    <span class="subject-icon">📐</span>
-                    Progreso de Matemáticas
-                </span>
-                <span class="progress-percent">65%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill math-progress"></div>
-            </div>
+    <div class="progress-container">
+        <div class="progress-title">
+            <span>
+                <span class="subject-icon">📐</span>
+                Progreso de Matemáticas
+            </span>
+            <span class="progress-percent">0%</span>
         </div>
+        <div class="progress-bar">
+            <div class="progress-fill math-progress" style="width: 0%"></div>
+        </div>
+    </div>
     
-        <div class="progress-container">
-            <div class="progress-title">
-                <span>
-                    <span class="subject-icon">📖</span>
-                    Progreso de Lenguaje
-                </span>
-                <span class="progress-percent">45%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill language-progress"></div>
-            </div>
+    <div class="progress-container">
+        <div class="progress-title">
+            <span>
+                <span class="subject-icon">📖</span>
+                Progreso de Lenguaje
+            </span>
+            <span class="progress-percent">0%</span>
         </div>
+        <div class="progress-bar">
+            <div class="progress-fill language-progress" style="width: 0%"></div>
+        </div>
+    </div>
     
-        <div class="progress-container">
-            <div class="progress-title">
-                <span>
-                    <span class="subject-icon">🔬</span>
-                    Progreso de Ciencias
-                </span>
-                <span class="progress-percent">80%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill science-progress"></div>
-            </div>
+    <div class="progress-container">
+        <div class="progress-title">
+            <span>
+                <span class="subject-icon">🔬</span>
+                Progreso de Ciencias
+            </span>
+            <span class="progress-percent">0%</span>
         </div>
+        <div class="progress-bar">
+            <div class="progress-fill science-progress" style="width: 0%"></div>
+        </div>
+    </div>
     
-        <div class="progress-container total-container">
-            <div class="progress-title">
-                <span class="total-title">
-                    <span class="subject-icon">🏆</span>
-                    Progreso Total
-                </span>
-                <span class="progress-percent total-percent">63%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill total-progress"></div>
-            </div>
+    <div class="progress-container total-container">
+        <div class="progress-title">
+            <span class="total-title">
+                <span class="subject-icon">🏆</span>
+                Progreso Total
+            </span>
+            <span class="progress-percent total-percent">0%</span>
         </div>
+        <div class="progress-bar">
+            <div class="progress-fill total-progress" style="width: 0%"></div>
+        </div>
+    </div>
 
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="user-progress.js"></script>
     <script src="ai-tutor.js"></script>
+    
+    <script>
+        // Script para cerrar sesión
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            cerrarSesion();
+        });
+        
+        // También podemos usar el avatar para cerrar sesión
+        document.getElementById('userProfileBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const confirmLogout = confirm('¿Deseas cerrar sesión?');
+            if (confirmLogout) {
+                cerrarSesion();
+            }
+        });
+    </script>
 </body>
 </html>

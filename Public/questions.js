@@ -1,17 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     if (typeof examJsonPath === 'undefined') {
         alert('Error: No se especificó la ruta del JSON de preguntas.');
         return;
     }
 
+    // Verificar autenticación primero
+    try {
+        const authResult = await obtenerUsuario();
+        if (!authResult.success) {
+            window.location.href = '/';
+            return;
+        }
+    } catch (error) {
+        console.error('Error al verificar autenticación:', error);
+        window.location.href = '/';
+        return;
+    }
+
+    // Determinar tipo de examen basado en la URL o la variable examJsonPath
+    let tipoExamen = 'matematicas'; // Default
+    
+    if (window.location.pathname.includes('Examen_Lenguaje.html') || examJsonPath.includes('Lenguage_questions')) {
+        tipoExamen = 'lenguaje';
+    } else if (window.location.pathname.includes('Examen_Ciencias.html') || examJsonPath.includes('Cience_questions')) {
+        tipoExamen = 'ciencias';
+    } else if (window.location.pathname.includes('Examen_mate.html') || examJsonPath.includes('Math_questions')) {
+        tipoExamen = 'matematicas';
+    }
+    
+    // Variables para el progreso
+    let examenId = null;
+    let userAnswers = {};
+    let preguntasRespondidas = [];
+    
+    // Obtener el examen primero para tener el ID
+    try {
+        const examResponse = await cargarExamenAPI(tipoExamen);
+        if (examResponse && !examResponse.msg) {
+            examenId = examResponse._id;
+        }
+    } catch (error) {
+        console.warn('Error al cargar examen desde API:', error);
+    }
+    
+    // Intentar cargar progreso guardado
+    let progresoResponse = null;
+    try {
+        progresoResponse = await obtenerProgresoTipo(tipoExamen);
+        if (progresoResponse && progresoResponse.success) {
+            const progress = progresoResponse.progress;
+            
+            // Restaurar respuestas si existen
+            if (progress.respuestas) {
+                userAnswers = progress.respuestas;
+                preguntasRespondidas = progress.preguntasRespondidas || [];
+            }
+        }
+    } catch (error) {
+        console.warn('Error al cargar progreso guardado:', error);
+    }
+
+    // Continuar con la carga del JSON local
     fetch(examJsonPath)
         .then(response => {
             if (!response.ok) throw new Error(`No se pudo cargar el JSON: ${examJsonPath}`);
             return response.json();
         })
-        .then(examQuestions => {
-            // Aquí empieza el código que tienes para manejar el examen:
-            let userAnswers = {};
+        .then(async examQuestions => {
+            // Si no tenemos ID de examen de la API, crear uno en el servidor
+            if (!examenId && examQuestions.length > 0) {
+                try {
+                    const newExam = {
+                        tipo: tipoExamen,
+                        nombre: `Examen de ${tipoExamen}`,
+                        preguntas: examQuestions
+                    };
+                    
+                    const examResult = await fetch('/api/exams', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newExam)
+                    });
+                    
+                    const examData = await examResult.json();
+                    if (examData.success) {
+                        examenId = examData.exam._id;
+                    }
+                } catch (error) {
+                    console.warn('Error al crear examen:', error);
+                }
+            }
+            
+            // Configurar variables para el examen
             const examContent = document.getElementById('exam-content');
             const questionsAnsweredElem = document.getElementById('questions-answered');
             const questionTotalElem = document.getElementById('question-total');
@@ -29,8 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let optionsHTML = '';
                 question.options.forEach((option, optIndex) => {
+                    // Verificar si esta opción ya fue seleccionada previamente
+                    const isSelected = userAnswers[question.id] === optIndex;
+                    const selectedClass = isSelected ? 'selected' : '';
+                    
                     optionsHTML += `
-                        <div class="option" data-question="${question.id}" data-option="${optIndex}">
+                        <div class="option ${selectedClass}" data-question="${question.id}" data-option="${optIndex}">
                             ${option}
                         </div>
                     `;
@@ -46,10 +130,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `;
                 examContent.appendChild(questionCard);
+                
+                // Si la pregunta ya fue respondida antes, marcarla como tal
+                if (preguntasRespondidas.includes(question.id)) {
+                    questionCard.dataset.answered = 'true';
+                }
             });
+            
+            // Actualizar progreso inicial
+            const answeredCount = preguntasRespondidas.length;
+            questionsAnsweredElem.textContent = answeredCount;
+            const progressPercent = (answeredCount / examQuestions.length) * 100;
+            progressBar.style.width = progressPercent + '%';
+            
+            // Habilitar submit si ya contestó todas
+            submitBtn.disabled = answeredCount !== examQuestions.length;
 
             // Manejar click en opciones
-            examContent.addEventListener('click', e => {
+            examContent.addEventListener('click', async e => {
                 if (!e.target.classList.contains('option')) return;
                 const questionId = e.target.dataset.question;
                 const optionIndex = parseInt(e.target.dataset.option);
@@ -65,13 +163,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 userAnswers[questionId] = optionIndex;
 
                 // Actualizar progreso
-                const answeredCount = Object.keys(userAnswers).length;
-                questionsAnsweredElem.textContent = answeredCount;
-                const progressPercent = (answeredCount / examQuestions.length) * 100;
-                progressBar.style.width = progressPercent + '%';
-
-                // Habilitar submit si contesta todas
-                submitBtn.disabled = answeredCount !== examQuestions.length;
+                const questionCard = document.getElementById(`question-${questionId}`);
+                if (!questionCard.dataset.answered) {
+                    questionCard.dataset.answered = 'true';
+                    preguntasRespondidas.push(questionId);
+                    
+                    // Actualizar contador y barra de progreso
+                    const answeredCount = preguntasRespondidas.length;
+                    questionsAnsweredElem.textContent = answeredCount;
+                    const progressPercent = (answeredCount / examQuestions.length) * 100;
+                    progressBar.style.width = progressPercent + '%';
+                    
+                    // Habilitar submit si contesta todas
+                    submitBtn.disabled = answeredCount !== examQuestions.length;
+                }
+                
+                // Guardar progreso en servidor
+                try {
+                    await guardarProgreso(
+                        examenId, 
+                        tipoExamen, 
+                        preguntasRespondidas, 
+                        userAnswers
+                    );
+                } catch (error) {
+                    console.warn('Error al guardar progreso:', error);
+                }
             });
 
             // Enviar examen
@@ -112,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const m = Math.floor(timeLeft / 60);
                 const s = timeLeft % 60;
-                timerElem.textContent = `Tiempo restante: ${m}:${s < 10 ? '0' : ''}${s}`;
+                timerElem.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
                 timeLeft--;
             }, 1000);
         })
