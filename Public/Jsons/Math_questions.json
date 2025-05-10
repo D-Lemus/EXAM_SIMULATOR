@@ -1,7 +1,7 @@
 [
     {
         "id": "math_q1",
-        "text": "¿Cuál es el resultado de 8 + 12 ÷ 4?",
+        "text": "¿Cuál es el resultado de 8 + 13 ÷ 4?",
         "options": ["5", "14", "11", "16"],
         "correctAnswer": 2,
         "defaultFeedback": "Primero se divide: 12 ÷ 4 = 3. Luego se suma: 8 + 3 = 11."

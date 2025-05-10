@@ -14,20 +14,35 @@ async function registrarUsuario(nombre, email, password) {
   }
 }
 
-// Función para iniciar sesión
+// Función para iniciar sesión con mejor manejo de errores
 async function iniciarSesion(email, password) {
-  try {
-      const respuesta = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-      });
-      
-      return await respuesta.json();
-  } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      return { success: false, msg: 'Error de conexión' };
-  }
+    try {
+        console.log('Intentando iniciar sesión con:', { email });
+        
+        const respuesta = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+            credentials: 'include' // Importante para incluir cookies
+        });
+        
+        console.log('Respuesta recibida:', respuesta.status);
+        
+        // Verificar si la respuesta es exitosa
+        if (!respuesta.ok) {
+            if (respuesta.status === 400) {
+                return { success: false, msg: 'Credenciales inválidas' };
+            }
+            return { success: false, msg: `Error: ${respuesta.status}` };
+        }
+        
+        // Intentar procesar la respuesta como JSON
+        const datos = await respuesta.json();
+        return datos;
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        return { success: false, msg: 'Error de conexión o formato de respuesta inválido' };
+    }
 }
 
 // Función para cerrar sesión

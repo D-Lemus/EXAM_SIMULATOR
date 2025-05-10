@@ -33,15 +33,12 @@ app.use('/api/progress', progressRoutes);
 
 // Ruta principal
 app.get('/', (req, res) => {
-    // Comprobar si hay token en cookies
-    const token = req.cookies.token;
-    
-    if (!token) {
-        // Si no hay token, redirigir a home
-        return res.sendFile(path.join(__dirname, 'public', 'home.html'));
-    }
-    
-    // Si hay token, mostrar exam.html
+    // Simplemente sirve home.html sin verificar tokens
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+// Ruta para la página de usuario (protegida)
+app.get('/exam', checkAuth, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'exam.html'));
 });
 
