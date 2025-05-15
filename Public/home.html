@@ -277,48 +277,90 @@
 <script src="auth.js"></script>
 <script>
     // Script para el formulario de login
-    document.querySelector('#loginModal form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        
-        const resultado = await iniciarSesion(email, password);
-        
-        if (resultado.success) {
-            // Redirigir a la página de exámenes
-            window.location.href = '/exam.html';
-        } else {
-            // Mostrar error
-            alert(resultado.msg || 'Error al iniciar sesión');
-        }
-    });
+// Script para el formulario de login
+document.querySelector('#loginModal form').addEventListener('submit', async function(e) {
+    e.preventDefault();
     
-    // Script para el formulario de registro
-    document.querySelector('#registroModal form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const nombre = document.getElementById('nombre').value + ' ' + document.getElementById('apellido').value;
-        const email = document.getElementById('regEmail').value;
-        const password = document.getElementById('regPassword').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-        
-        // Verificar que las contraseñas coincidan
-        if (password !== confirmPassword) {
-            alert('Las contraseñas no coinciden');
-            return;
-        }
-        
-        const resultado = await registrarUsuario(nombre, email, password);
-        
-        if (resultado.success) {
-            // Redirigir a la página de exámenes
-            window.location.href = '/exam.html';
-        } else {
-            // Mostrar error
-            alert(resultado.msg || 'Error al registrar usuario');
-        }
-    });
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    
+    // Validaciones básicas
+    if (!email || !password) {
+        alert('Por favor, completa todos los campos');
+        return;
+    }
+    
+    // Mostrar indicador de carga
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Iniciando sesión...';
+    submitBtn.disabled = true;
+    
+    const resultado = await iniciarSesion(email, password);
+    
+    // Restaurar botón
+    submitBtn.textContent = originalBtnText;
+    submitBtn.disabled = false;
+    
+    if (resultado.success) {
+        // Redirigir a la página de exámenes
+        window.location.href = '/exam.html';
+    } else {
+        // Mostrar error
+        alert(resultado.msg || 'Error al iniciar sesión. Verifica tus credenciales.');
+    }
+});
+
+// Script para el formulario de registro
+document.querySelector('#registroModal form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const password = document.getElementById('regPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    // Validaciones básicas
+    if (!nombre || !apellido || !email || !password || !confirmPassword) {
+        alert('Por favor, completa todos los campos');
+        return;
+    }
+    
+    // Verificar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden');
+        return;
+    }
+    
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, introduce un correo electrónico válido');
+        return;
+    }
+    
+    // Mostrar indicador de carga
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Registrando...';
+    submitBtn.disabled = true;
+    
+    const nombreCompleto = nombre + ' ' + apellido;
+    const resultado = await registrarUsuario(nombreCompleto, email, password);
+    
+    // Restaurar botón
+    submitBtn.textContent = originalBtnText;
+    submitBtn.disabled = false;
+    
+    if (resultado.success) {
+        // Redirigir a la página de exámenes
+        window.location.href = '/exam.html';
+    } else {
+        // Mostrar error
+        alert(resultado.msg || 'Error al registrar usuario');
+    }
+});
 </script>
   
 </body>

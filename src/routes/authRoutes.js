@@ -3,12 +3,12 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-// Rutas públicas
+// Public routes
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-router.get('/logout', authController.logout);
+router.post('/logout', authController.logout); // Changed from GET to POST to match frontend
 
-// Rutas protegidas
+// Protected routes
 router.get('/user', authMiddleware, authController.getUserInfo);
 
 module.exports = router;

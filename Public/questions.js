@@ -1,3 +1,4 @@
+// Esperamos a que la pagina haga load completamente 
 document.addEventListener('DOMContentLoaded', async () => {
     if (typeof examJsonPath === 'undefined') {
         alert('Error: No se especificó la ruta del JSON de preguntas.');
@@ -8,8 +9,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const authResult = await obtenerUsuario();
         if (!authResult.success) {
-            window.location.href = '/';
-            return;
+            if (!window.location.pathname.includes('home.html')) {
+                window.location.href = '/home.html'; // Changed from '/'
+                return;
+            }
         }
     } catch (error) {
         console.error('Error al verificar autenticación:', error);
@@ -28,6 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         tipoExamen = 'matematicas';
     }
     
+    console.log('Tipo de examen detectado:', tipoExamen);
+    
     // Variables para el progreso
     let examenId = null;
     let userAnswers = {};
@@ -38,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const examResponse = await cargarExamenAPI(tipoExamen);
         if (examResponse && !examResponse.msg) {
             examenId = examResponse._id;
+            console.log('ID de examen obtenido:', examenId);
         }
     } catch (error) {
         console.warn('Error al cargar examen desde API:', error);
@@ -49,11 +55,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         progresoResponse = await obtenerProgresoTipo(tipoExamen);
         if (progresoResponse && progresoResponse.success) {
             const progress = progresoResponse.progress;
+            console.log('Progreso guardado cargado:', progress);
             
             // Restaurar respuestas si existen
             if (progress.respuestas) {
                 userAnswers = progress.respuestas;
                 preguntasRespondidas = progress.preguntasRespondidas || [];
+                console.log('Respuestas restauradas:', Object.keys(userAnswers).length);
+                console.log('Preguntas respondidas:', preguntasRespondidas.length);
             }
         }
     } catch (error) {
@@ -67,6 +76,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             return response.json();
         })
         .then(async examQuestions => {
+            console.log('Preguntas cargadas del JSON:', examQuestions.length);
+            
             // Si no tenemos ID de examen de la API, crear uno en el servidor
             if (!examenId && examQuestions.length > 0) {
                 try {
@@ -79,12 +90,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const examResult = await fetch('/api/exams', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(newExam)
+                        body: JSON.stringify(newExam),
+                        credentials: 'include'
                     });
                     
                     const examData = await examResult.json();
                     if (examData.success) {
                         examenId = examData.exam._id;
+                        console.log('Nuevo examen creado con ID:', examenId);
                     }
                 } catch (error) {
                     console.warn('Error al crear examen:', error);
@@ -145,12 +158,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             // Habilitar submit si ya contestó todas
             submitBtn.disabled = answeredCount !== examQuestions.length;
+            
+            console.log('Progreso inicial:', answeredCount, 'de', examQuestions.length, 'preguntas');
 
             // Manejar click en opciones
             examContent.addEventListener('click', async e => {
                 if (!e.target.classList.contains('option')) return;
                 const questionId = e.target.dataset.question;
                 const optionIndex = parseInt(e.target.dataset.option);
+                
+                console.log('Opción seleccionada:', questionId, optionIndex);
 
                 // Deseleccionar
                 const allOptions = examContent.querySelectorAll(`.option[data-question="${questionId}"]`);
@@ -174,12 +191,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const progressPercent = (answeredCount / examQuestions.length) * 100;
                     progressBar.style.width = progressPercent + '%';
                     
+                    console.log('Progreso actualizado:', answeredCount, 'de', examQuestions.length, 'preguntas');
+                    
                     // Habilitar submit si contesta todas
                     submitBtn.disabled = answeredCount !== examQuestions.length;
                 }
                 
                 // Guardar progreso en servidor
                 try {
+                    console.log('Guardando progreso para:', tipoExamen);
                     await guardarProgreso(
                         examenId, 
                         tipoExamen, 
@@ -192,30 +212,56 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             // Enviar examen
-            submitBtn.addEventListener('click', () => {
+            submitBtn.addEventListener('click', async () => {
                 let score = 0;
+                let totalAnswered = 0;
+                
+                // Verificar todas las preguntas
                 examQuestions.forEach(q => {
                     const userAnswer = userAnswers[q.id];
-                    const isCorrect = userAnswer === q.correctAnswer;
                     
-                    if (isCorrect) score++;
-                    
-                    // Mostrar retroalimentación
-                    const feedbackEl = document.getElementById(`feedback-${q.id}`);
-                    const aiButtonEl = document.getElementById(`ai-btn-${q.id}`);
-                    
-                    if (feedbackEl) feedbackEl.style.display = 'block';
-                    
-                    // Solo mostrar el botón de AI para respuestas incorrectas
-                    if (!isCorrect && aiButtonEl) {
-                        aiButtonEl.style.display = 'block';
+                    // Contar solo preguntas respondidas
+                    if (userAnswer !== undefined) {
+                        totalAnswered++;
+                        const isCorrect = userAnswer === q.correctAnswer;
+                        
+                        if (isCorrect) score++;
+                        
+                        // Mostrar retroalimentación
+                        const feedbackEl = document.getElementById(`feedback-${q.id}`);
+                        const aiButtonEl = document.getElementById(`ai-btn-${q.id}`);
+                        
+                        if (feedbackEl) feedbackEl.style.display = 'block';
+                        
+                        // Solo mostrar el botón de AI para respuestas incorrectas
+                        if (!isCorrect && aiButtonEl) {
+                            aiButtonEl.style.display = 'block';
+                        }
                     }
                 });
+                
+                // Asegurarse de guardar progreso final
+                try {
+                    await guardarProgreso(
+                        examenId, 
+                        tipoExamen, 
+                        preguntasRespondidas, 
+                        userAnswers
+                    );
+                    console.log('Progreso final guardado');
+                } catch (error) {
+                    console.warn('Error al guardar progreso final:', error);
+                }
                 
                 alert(`Examen terminado. Tu puntuación: ${score} / ${examQuestions.length}`);
                 
                 // Añadir eventos a botones de explicación AI
                 setupAITutorButtons(examQuestions, userAnswers);
+                
+                // Actualizar UI de progreso
+                if (window.actualizarProgresoUI && typeof window.actualizarProgresoUI === 'function') {
+                    setTimeout(window.actualizarProgresoUI, 1000);
+                }
             });
 
             // Temporizador (60 minutos)
@@ -232,6 +278,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 timerElem.textContent = `${m}:${s < 10 ? '0' : ''}${s}`;
                 timeLeft--;
             }, 1000);
+            
+            // Exponer funciones para que otros scripts puedan acceder
+            window.actualizarProgresoExamen = async function() {
+                try {
+                    await guardarProgreso(
+                        examenId, 
+                        tipoExamen, 
+                        preguntasRespondidas, 
+                        userAnswers
+                    );
+                    console.log('Progreso actualizado por solicitud externa');
+                    return true;
+                } catch (error) {
+                    console.error('Error al actualizar progreso por solicitud externa:', error);
+                    return false;
+                }
+            };
         })
         .catch(err => {
             alert('Error al cargar el examen: ' + err.message);

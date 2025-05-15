@@ -3,19 +3,23 @@ const Exam = require('../models/Exam');
 
 exports.getProgress = async (req, res) => {
     try {
-        // Obtener todo el progreso del usuario en todos los exámenes
+        // Get all user progress for all exams
         const progress = await Progress.find({ usuario: req.user.id })
-                                       .populate('examen', 'tipo nombre')
-                                       .sort({ fecha: -1 });
+                                      .populate('examen', 'tipo nombre')
+                                      .sort({ fecha: -1 });
         
-        // Agrupar por tipo de examen y tomar el más reciente
+        console.log('User progress found:', progress.length, 'records');
+        
+        // Group by exam type and take the most recent
         const progressByType = {};
         
         progress.forEach(p => {
-            if (!progressByType[p.tipo] || new Date(p.fecha) > new Date(progressByType[p.tipo].fecha)) {
-                progressByType[p.tipo] = {
+            const tipo = p.tipo; // Use the tipo field directly from Progress model
+            
+            if (!progressByType[tipo] || new Date(p.fecha) > new Date(progressByType[tipo].fecha)) {
+                progressByType[tipo] = {
                     id: p._id,
-                    tipo: p.tipo,
+                    tipo: tipo,
                     examen: p.examen,
                     porcentajeCompletado: p.porcentajeCompletado,
                     fecha: p.fecha
@@ -23,7 +27,7 @@ exports.getProgress = async (req, res) => {
             }
         });
         
-        // Calcular porcentaje total
+        // Calculate total percentage
         let porcentajeTotal = 0;
         let tiposContados = 0;
         
@@ -41,7 +45,7 @@ exports.getProgress = async (req, res) => {
         });
         
     } catch (error) {
-        console.error(error);
+        console.error('Error getting progress:', error);
         res.status(500).json({ msg: 'Error en el servidor' });
     }
 };
@@ -99,31 +103,41 @@ exports.saveProgress = async (req, res) => {
     try {
         const { examenId, tipo, preguntasRespondidas, respuestas } = req.body;
         
-        // Validar tipo de examen
+        console.log('Saving progress:', {
+            userId: req.user.id,
+            examenId,
+            tipo,
+            preguntasCount: preguntasRespondidas.length,
+            respuestasCount: Object.keys(respuestas).length
+        });
+        
+        // Validate exam type
         if (!['matematicas', 'lenguaje', 'ciencias'].includes(tipo)) {
             return res.status(400).json({ msg: 'Tipo de examen inválido' });
         }
         
-        // Buscar examen
+        // Find exam
         const exam = await Exam.findById(examenId);
         if (!exam) {
             return res.status(404).json({ msg: 'Examen no encontrado' });
         }
         
-        // Calcular porcentaje completado
-        const porcentajeCompletado = (preguntasRespondidas.length / exam.preguntas.length) * 100;
+        // Calculate completion percentage
+        const porcentajeCompletado = exam.preguntas.length > 0 
+            ? (preguntasRespondidas.length / exam.preguntas.length) * 100 
+            : 0;
         
-        // Crear o actualizar el progreso
+        // Create or update progress
         let progress = await Progress.findOne({
             usuario: req.user.id,
             examen: examenId
         });
         
         if (progress) {
-            // Actualizar progreso existente
+            // Update existing progress
             progress.preguntasRespondidas = preguntasRespondidas;
             
-            // Convertir el objeto respuestas a un Map
+            // Convert answers object to Map
             const respuestasMap = new Map();
             Object.keys(respuestas).forEach(key => {
                 respuestasMap.set(key, respuestas[key]);
@@ -131,8 +145,9 @@ exports.saveProgress = async (req, res) => {
             
             progress.respuestas = respuestasMap;
             progress.porcentajeCompletado = porcentajeCompletado;
+            progress.tipo = tipo; // Ensure tipo is set correctly
         } else {
-            // Crear nuevo progreso
+            // Create new progress
             const respuestasMap = new Map();
             Object.keys(respuestas).forEach(key => {
                 respuestasMap.set(key, respuestas[key]);
@@ -149,17 +164,23 @@ exports.saveProgress = async (req, res) => {
         }
         
         await progress.save();
+        console.log('Progress saved successfully:', {
+            id: progress._id,
+            tipo: progress.tipo,
+            porcentajeCompletado: progress.porcentajeCompletado
+        });
         
         res.json({ 
             success: true, 
             progress: {
                 id: progress._id,
+                tipo: progress.tipo,
                 porcentajeCompletado: progress.porcentajeCompletado
             }
         });
         
     } catch (error) {
-        console.error(error);
+        console.error('Error saving progress:', error);
         res.status(500).json({ msg: 'Error en el servidor' });
     }
 };

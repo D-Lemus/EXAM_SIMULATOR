@@ -12,7 +12,7 @@ function requestAITutor(questionText, userAnswer, correctAnswer, responseContain
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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' // Replace with your actual API key
+            'Authorization': 'Bearer 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' // Replace with your actual API key
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
@@ -31,7 +31,7 @@ Correct answer: ${correctAnswer}
 
 Can you explain why my answer is incorrect and why the correct answer is right? Please provide a clear, educational explanation that will help me understand the concept better.
 When providing math questions i need you to use a format that is clear & spacious for the user. Dont over explain things and try to be as brief but as clear as possible. If the answer is just a fact try to be as extremely brief as possible
-as it is an answer that doesnt even require long explanation. A`
+as it is an answer that doesnt even require long explanation.`
                 }
             ],
             max_tokens: 500

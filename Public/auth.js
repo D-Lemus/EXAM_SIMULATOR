@@ -7,7 +7,14 @@ async function registrarUsuario(nombre, email, password) {
           body: JSON.stringify({ nombre, email, password })
       });
       
-      return await respuesta.json();
+      const data = await respuesta.json();
+      
+      // Mostrar mensaje específico para usuario existente
+      if (respuesta.status === 400 && data.msg === 'El usuario ya existe') {
+          return { success: false, msg: 'El correo ya está registrado. Por favor usa otro correo o inicia sesión.' };
+      }
+      
+      return data;
   } catch (error) {
       console.error('Error al registrar usuario:', error);
       return { success: false, msg: 'Error de conexión' };
@@ -30,10 +37,8 @@ async function iniciarSesion(email, password) {
         
         // Verificar si la respuesta es exitosa
         if (!respuesta.ok) {
-            if (respuesta.status === 400) {
-                return { success: false, msg: 'Credenciales inválidas' };
-            }
-            return { success: false, msg: `Error: ${respuesta.status}` };
+            const errorData = await respuesta.json();
+            return { success: false, msg: errorData.msg || `Error: ${respuesta.status}` };
         }
         
         // Intentar procesar la respuesta como JSON
@@ -48,7 +53,10 @@ async function iniciarSesion(email, password) {
 // Función para cerrar sesión
 async function cerrarSesion() {
   try {
-      const respuesta = await fetch('/api/auth/logout');
+      const respuesta = await fetch('/api/auth/logout', {
+          method: 'POST',  // Cambiado a POST para mayor seguridad
+          credentials: 'include'  // Importante para incluir cookies
+      });
       const resultado = await respuesta.json();
       
       if (resultado.success) {
@@ -65,10 +73,11 @@ async function cerrarSesion() {
 // Función para obtener información del usuario actual
 async function obtenerUsuario() {
   try {
-      const respuesta = await fetch('/api/auth/user');
+      const respuesta = await fetch('/api/auth/user', {
+          credentials: 'include'  // Importante para incluir cookies
+      });
       
       if (respuesta.status === 401) {
-          window.location.href = '/';
           return { success: false, msg: 'No autenticado' };
       }
       
@@ -90,6 +99,9 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (resultado.success) {
       // Actualizar UI con la información del usuario
       actualizarUIUsuario(resultado.user);
+  } else if (window.location.pathname !== '/' && window.location.pathname !== '/home.html') {
+      // Redirigir a home si no está autenticado y no está en la página principal
+      window.location.href = '/';
   }
 });
 
@@ -107,15 +119,17 @@ function actualizarUIUsuario(user) {
       userEmailElement.textContent = user.email || 'usuario@ejemplo.com';
   }
   
-  // Añadir funcionalidad de cerrar sesión al botón de usuario
-  const userBtn = document.querySelector('.user-btn');
-  if (userBtn) {
-      userBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const confirmLogout = confirm('¿Deseas cerrar sesión?');
-          if (confirmLogout) {
-              cerrarSesion();
-          }
-      });
-  }
+  // Añadir funcionalidad de cerrar sesión a elementos relevantes
+  const userBtns = document.querySelectorAll('#userProfileBtn, #logoutBtn, #logoutBtnSidebar');
+  userBtns.forEach(btn => {
+      if (btn) {
+          btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              const confirmLogout = confirm('¿Deseas cerrar sesión?');
+              if (confirmLogout) {
+                  cerrarSesion();
+              }
+          });
+      }
+  });
 }

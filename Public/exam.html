@@ -10,12 +10,15 @@
     <button class="sidebar-toggle" id="sidebarToggle">☰</button>
 
     <div class="sidebar" id="sidebar">
-        <a href="exam.html" class="user-btn">US</a>
+        <!-- Este es el botón de usuario en la barra de navegación que queremos modificar -->
+        <a href="#" id="userBtn" class="user-btn">US</a>
         <div class="divider"></div>
         <a href="/" class="exam-btn home-btn">🏠 Página Principal</a>
         <a href="Examen_mate.html" class="exam-btn math-btn">📐𝙀𝙭𝙖𝙢𝙚𝙣 𝙙𝙚 𝙢𝙖𝙩𝙚𝙢𝙖𝙩𝙞𝙘𝙖𝙨</a>
         <a href="Examen_Lenguaje.html" class="exam-btn language-btn">📖𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗹𝗲𝗻𝗴𝘂𝗮𝗷𝗲</a>
         <a href="Examen_Ciencias.html" class="exam-btn science-btn">🧪𝗘𝘅𝗮𝗺𝗲𝗻 𝗱𝗲 𝗰𝗶𝗲𝗻𝗰𝗶𝗮𝘀</a>
+        <!-- Este botón mantendrá su funcionalidad de logout -->
+        <a href="#" id="logoutBtnSidebar" class="exam-btn logout-btn">🚪 Cerrar Sesión</a>
     </div>
     
     <!--Logic of the side bar-->
@@ -38,11 +41,13 @@
             }
         });
     </script>
-        
+    
     <div class="user-profile">
         <div class="user-avatar" id="userAvatar">US</div>
         <div class="user-name">Usuario Estudiante</div>
         <div class="user-email">usuario@ejemplo.com</div>
+        <!-- Este botón mantendrá su funcionalidad de logout -->
+        <button id="logoutBtn" class="logout-button">Cerrar Sesión</button>
     </div>
     
     <div class="progress-container">
@@ -103,20 +108,40 @@
     <script src="ai-tutor.js"></script>
     
     <script>
-        // Script para cerrar sesión
-        document.getElementById('logoutBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            cerrarSesion();
-        });
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded, setting up buttons');
         
-        // También podemos usar el avatar para cerrar sesión
-        document.getElementById('userProfileBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const confirmLogout = confirm('¿Deseas cerrar sesión?');
-            if (confirmLogout) {
-                cerrarSesion();
-            }
-        });
+        // Solo modificaremos el botón de usuario en la barra de navegación
+        setupUserNavButton();
+    });
+    
+    // Función para configurar únicamente el botón de usuario en la barra de navegación
+    function setupUserNavButton() {
+        // Obtener el botón de usuario en la barra de navegación
+        const userBtn = document.getElementById('userBtn');
+        
+        // Verificar si el botón existe y agregar el event listener
+        if (userBtn) {
+            console.log('Botón de usuario en la barra de navegación encontrado, configurando redirección a exam.html');
+            
+            // Eliminar cualquier event listener existente clonando el elemento
+            const newUserBtn = userBtn.cloneNode(true);
+            userBtn.parentNode.replaceChild(newUserBtn, userBtn);
+            
+            // Agregar nuevo event listener para redirigir a exam.html
+            newUserBtn.addEventListener('click', function(e) {
+                console.log('Botón de usuario en la barra de navegación clickeado, redirigiendo a exam.html');
+                e.preventDefault();
+                window.location.href = 'exam.html';
+            });
+        } else {
+            console.warn('Botón de usuario en la barra de navegación no encontrado');
+        }
+        
+        // Mantener la función original para el cierre de sesión
+        // No modificamos los botones de cerrar sesión
+    }
     </script>
 </body>
 </html>
