@@ -123,7 +123,13 @@ exports.logout = (req, res) => {
 exports.getUserInfo = async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
+        res.json({
+            id: user._id,
+            nombre: user.nombre,
+            email: user.email,
+            role: user.role,
+            createdAt: user.createdAt
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: 'Error en el servidor' });

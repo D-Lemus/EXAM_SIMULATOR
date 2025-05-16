@@ -17,23 +17,39 @@
                 <img src="images/logo_white.png" alt="Logo" height="30">
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#Profesores" style="color: white;">Profesores</a>
-                    </li>
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#programas" style="color: white;">Nuestros Programas</a>
-                    </li>
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#nosotros" style="color: white;">Nosotros</a>
-                    </li>
-                    <li class="nav-item me-4">
-                        <a class="nav-link" href="#contacto" style="color: white;">Contáctanos</a>
-                    </li>
-                    <li class="nav-item me-4">
-                        <a class="nav-link btn btn-ingresar ms-3" href="#login">Ingresar</a>
-                    </li>
-                </ul>
+               <ul class="navbar-nav ms-auto">
+    <li class="nav-item me-4">
+        <a class="nav-link" href="#Profesores" style="color: white;">Profesores</a>
+    </li>
+    <li class="nav-item me-4">
+        <a class="nav-link" href="#programas" style="color: white;">Nuestros Programas</a>
+    </li>
+    <li class="nav-item me-4">
+        <a class="nav-link" href="#nosotros" style="color: white;">Nosotros</a>
+    </li>
+    <li class="nav-item me-4">
+        <a class="nav-link" href="#contacto" style="color: white;">Contáctanos</a>
+    </li>
+    <!-- Elementos para usuarios NO autenticados -->
+    <li class="nav-item me-4" id="login-btn">
+        <a class="nav-link btn btn-ingresar ms-3" href="#login">Ingresar</a>
+    </li>
+    <!-- Elementos para usuarios autenticados (inicialmente ocultos) -->
+    <li class="nav-item me-4" id="user-profile-btn" style="display: none;">
+        <a class="nav-link btn btn-primary" href="/exam.html">
+            <i class="bi bi-person-circle"></i> 
+            <span id="userName">Usuario</span>
+        </a>
+    </li>
+    <li class="nav-item me-4" id="admin-btn" style="display: none;">
+        <a class="nav-link btn btn-warning" href="/admin">Administración</a>
+    </li>
+    <li class="nav-item me-4" id="logout-btn" style="display: none;">
+        <a class="nav-link btn btn-outline-danger" href="#" onclick="cerrarSesion(); return false;">
+            Cerrar Sesión
+        </a>
+    </li>
+</ul>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -275,93 +291,211 @@
   </script>
   <!-- Scripts de autenticación -->
 <script src="auth.js"></script>
+
 <script>
-    // Script para el formulario de login
-// Script para el formulario de login
-document.querySelector('#loginModal form').addEventListener('submit', async function(e) {
-    e.preventDefault();
+// Lista de emails con permisos de administrador - MODIFICA ESTA LISTA CON TU EMAIL
+const ADMIN_EMAILS = ['josuegodor@gmail.com', 'diegolemus.2015@example.com', 'ADMIN@admin.com']; 
+
+// Función principal para actualizar los elementos de la interfaz según el estado de autenticación
+async function actualizarUISegunAutenticacion() {
+    try {
+        console.log("Verificando estado de autenticación...");
+        
+        // Elementos del DOM
+        const loginBtn = document.getElementById('login-btn');
+        const userProfileBtn = document.getElementById('user-profile-btn');
+        const adminBtn = document.getElementById('admin-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const userName = document.getElementById('userName');
+        
+        // Obtener el estado de autenticación actual
+        const userData = await obtenerUsuario();
+        console.log("Datos de usuario:", userData);
+        
+        if (userData.success && userData.user) {
+            // Usuario autenticado
+            console.log("Usuario autenticado:", userData.user);
+            
+            // Ocultar botón de login
+            if (loginBtn) loginBtn.style.display = 'none';
+            
+            // Mostrar botones de usuario y logout
+            if (userProfileBtn) userProfileBtn.style.display = 'block';
+            if (logoutBtn) logoutBtn.style.display = 'block';
+            
+            // Actualizar nombre de usuario si está disponible
+            if (userName && userData.user.nombre) {
+                userName.textContent = userData.user.nombre.split(' ')[0] || 'Usuario';
+            }
+            
+            // Verificar si el usuario es administrador por su email
+            if (userData.user.email && ADMIN_EMAILS.includes(userData.user.email)) {
+                console.log("Usuario es administrador:", userData.user.email);
+                if (adminBtn) adminBtn.style.display = 'block';
+            } else {
+                console.log("Usuario no es administrador:", userData.user.email);
+                if (adminBtn) adminBtn.style.display = 'none';
+            }
+        } else {
+            // Usuario no autenticado
+            console.log("Usuario no autenticado");
+            
+            // Mostrar botón de login
+            if (loginBtn) loginBtn.style.display = 'block';
+            
+            // Ocultar botones de usuario, admin y logout
+            if (userProfileBtn) userProfileBtn.style.display = 'none';
+            if (adminBtn) adminBtn.style.display = 'none';
+            if (logoutBtn) logoutBtn.style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error al verificar autenticación:', error);
+    }
+}
+
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM cargado, configurando interfaz...");
     
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    
-    // Validaciones básicas
-    if (!email || !password) {
-        alert('Por favor, completa todos los campos');
-        return;
+    // Añadir Bootstrap Icons si no están ya incluidos
+    if (!document.querySelector('link[href*="bootstrap-icons"]')) {
+        const iconLink = document.createElement('link');
+        iconLink.rel = 'stylesheet';
+        iconLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css';
+        document.head.appendChild(iconLink);
     }
     
-    // Mostrar indicador de carga
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = 'Iniciando sesión...';
-    submitBtn.disabled = true;
+    // Configurar el modal de login
+    const loginLink = document.querySelector('a[href="#login"]');
+    if (loginLink) {
+        loginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            new bootstrap.Modal(document.getElementById('loginModal')).show();
+        });
+    }
     
-    const resultado = await iniciarSesion(email, password);
-    
-    // Restaurar botón
-    submitBtn.textContent = originalBtnText;
-    submitBtn.disabled = false;
-    
-    if (resultado.success) {
-        // Redirigir a la página de exámenes
-        window.location.href = '/exam.html';
-    } else {
-        // Mostrar error
-        alert(resultado.msg || 'Error al iniciar sesión. Verifica tus credenciales.');
+    // Actualizar la interfaz inmediatamente
+    actualizarUISegunAutenticacion();
+});
+
+// Asegurarnos de que se verifique el estado incluso si la página se carga desde caché
+window.addEventListener('pageshow', function(event) {
+    // El evento pageshow se dispara incluso cuando la página se carga desde caché
+    if (event.persisted) {
+        console.log("Página cargada desde caché, actualizando estado...");
+        actualizarUISegunAutenticacion();
     }
 });
 
-// Script para el formulario de registro
-document.querySelector('#registroModal form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const nombre = document.getElementById('nombre').value.trim();
-    const apellido = document.getElementById('apellido').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const password = document.getElementById('regPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    
-    // Validaciones básicas
-    if (!nombre || !apellido || !email || !password || !confirmPassword) {
-        alert('Por favor, completa todos los campos');
-        return;
+// Configurar los formularios de login y registro
+function configurarFormularios() {
+    // Configurar formulario de login
+    const loginForm = document.querySelector('#loginModal form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('Por favor, completa todos los campos');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Iniciando sesión...';
+            submitBtn.disabled = true;
+            
+            try {
+                const resultado = await iniciarSesion(email, password);
+                
+                if (resultado.success) {
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                    if (modal) modal.hide();
+                    
+                    // Actualizar UI antes de redirigir
+                    await actualizarUISegunAutenticacion();
+                    
+                    // Redirigir
+                    window.location.href = '/exam.html';
+                } else {
+                    alert(resultado.msg || 'Error al iniciar sesión. Verifica tus credenciales.');
+                }
+            } catch (error) {
+                console.error("Error al iniciar sesión:", error);
+                alert("Error de conexión. Intenta nuevamente.");
+            } finally {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
     }
     
-    // Verificar que las contraseñas coincidan
-    if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden');
-        return;
+    // Configurar formulario de registro
+    const registroForm = document.querySelector('#registroModal form');
+    if (registroForm) {
+        registroForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const apellido = document.getElementById('apellido').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (!nombre || !apellido || !email || !password || !confirmPassword) {
+                alert('Por favor, completa todos los campos');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, introduce un correo electrónico válido');
+                return;
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Registrando...';
+            submitBtn.disabled = true;
+            
+            try {
+                const nombreCompleto = nombre + ' ' + apellido;
+                const resultado = await registrarUsuario(nombreCompleto, email, password);
+                
+                if (resultado.success) {
+                    // Cerrar modal
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('registroModal'));
+                    if (modal) modal.hide();
+                    
+                    // Actualizar UI antes de redirigir
+                    await actualizarUISegunAutenticacion();
+                    
+                    // Redirigir
+                    window.location.href = '/exam.html';
+                } else {
+                    alert(resultado.msg || 'Error al registrar usuario');
+                }
+            } catch (error) {
+                console.error("Error al registrar:", error);
+                alert("Error de conexión. Intenta nuevamente.");
+            } finally {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
     }
-    
-    // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Por favor, introduce un correo electrónico válido');
-        return;
-    }
-    
-    // Mostrar indicador de carga
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.textContent;
-    submitBtn.textContent = 'Registrando...';
-    submitBtn.disabled = true;
-    
-    const nombreCompleto = nombre + ' ' + apellido;
-    const resultado = await registrarUsuario(nombreCompleto, email, password);
-    
-    // Restaurar botón
-    submitBtn.textContent = originalBtnText;
-    submitBtn.disabled = false;
-    
-    if (resultado.success) {
-        // Redirigir a la página de exámenes
-        window.location.href = '/exam.html';
-    } else {
-        // Mostrar error
-        alert(resultado.msg || 'Error al registrar usuario');
-    }
-});
+}
+document.addEventListener('DOMContentLoaded', configurarFormularios);
 </script>
-  
+
 </body>
 </html>

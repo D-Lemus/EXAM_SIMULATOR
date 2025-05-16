@@ -1,0 +1,125 @@
+body {
+background-color: #f5f5f5;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar {
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card {
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+border: none;
+}
+.card-title {
+color: #333;
+font-weight: 600;
+}
+.questions-list {
+max-height: 800px;
+overflow-y: auto;
+}
+.question-card {
+background-color: #fff;
+border-radius: 8px;
+padding: 15px;
+margin-bottom: 15px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+position: relative;
+}
+.question-actions {
+position: absolute;
+top: 15px;
+right: 15px;
+}
+.question-number {
+display: inline-block;
+width: 30px;
+height: 30px;
+background-color: #f1cb42;
+color: #000;
+border-radius: 50%;
+text-align: center;
+line-height: 30px;
+font-weight: bold;
+margin-right: 10px;
+}
+.question-text {
+font-size: 18px;
+margin-bottom: 15px;
+padding-right: 80px;
+}
+.options-list {
+margin-left: 40px;
+}
+.option-item {
+display: flex;
+align-items: center;
+margin-bottom: 8px;
+}
+.option-item.correct {
+color: #28a745;
+font-weight: 500;
+}
+.option-radio {
+margin-right: 10px;
+}
+.feedback-container {
+background-color: #f8f9fa;
+padding: 10px 15px;
+border-radius: 8px;
+margin-top: 15px;
+border-left: 4px solid #6c757d;
+}
+.btn-action {
+padding: 0.25rem 0.5rem;
+font-size: 0.875rem;
+margin-left: 5px;
+}
+.modal-content {
+border-radius: 10px;
+border: none;
+}
+.modal-header {
+background-color: #f8f9fa;
+border-radius: 10px 10px 0 0;
+}
+.modal-footer {
+background-color: #f8f9fa;
+border-radius: 0 0 10px 10px;
+}
+.question-card {
+transition: all 0.3s ease;
+}
+.question-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+#save-all-btn {
+transition: all 0.2s ease;
+}
+#save-all-btn:hover {
+transform: scale(1.05);
+}
+.save-success {
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 1050;
+animation: fadeOut 3s forwards;
+}
+@keyframes fadeOut {
+0% { opacity: 1; }
+70% { opacity: 1; }
+100% { opacity: 0; }
+}
+@media (max-width: 768px) {
+.question-actions {
+position: static;
+margin-top: 10px;
+display: flex;
+justify-content: flex-end;
+}
+.question-text {
+padding-right: 0;
+}
+}
