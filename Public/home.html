@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Y Tu Lugar - Preparate para tu examen UABC</title>
+  <title>Preparate para tu examen UABC</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,22 +19,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav ms-auto">
     <li class="nav-item me-4">
-        <a class="nav-link" href="#Profesores" style="color: white;">Profesores</a>
+        <a class="nav-link" href="#profesores" style="color: white;">Profesores</a>
     </li>
     <li class="nav-item me-4">
         <a class="nav-link" href="#programas" style="color: white;">Nuestros Programas</a>
     </li>
     <li class="nav-item me-4">
-        <a class="nav-link" href="#nosotros" style="color: white;">Nosotros</a>
+        <a class="nav-link" href="#sobre-nosotros" style="color: white;">Nosotros</a>
     </li>
     <li class="nav-item me-4">
         <a class="nav-link" href="#contacto" style="color: white;">Contáctanos</a>
     </li>
-    <!-- Elementos para usuarios NO autenticados -->
+    <!-- usuarios NO autenticados -->
     <li class="nav-item me-4" id="login-btn">
         <a class="nav-link btn btn-ingresar ms-3" href="#login">Ingresar</a>
     </li>
-    <!-- Elementos para usuarios autenticados (inicialmente ocultos) -->
+    <!-- usuarios autenticados (inicialmente ocultos) -->
     <li class="nav-item me-4" id="user-profile-btn" style="display: none;">
         <a class="nav-link btn btn-primary" href="/exam.html">
             <i class="bi bi-person-circle"></i> 
@@ -68,6 +68,7 @@
     <img src="images/portada.png" alt="Prepárate para tu examen UABC y asegura tu lugar" class="imagen-text">
 
 </div> 
+<!-- NOSOTROS -->
 <section id="sobre-nosotros" style="margin: 0; padding: 0;">
   <div class="container-padre">
     <img src="images/megafono.png" alt="Megafono" class="imagen-megafono">
@@ -101,124 +102,188 @@
   </div>
 </section>
 
-  <!-- Sección Programas Educativos -->
-  <section id="programas" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="section-title">NUESTROS PROGRAMAS EDUCATIVOS</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 text-center p-4">
-            <div class="card-body">
-              <h3 class="card-title">Lectura</h3>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <a href="#" class="btn btn-outline-primary">Más información</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 text-center p-4">
-            <div class="card-body">
-              <h3 class="card-title">Lengua Escrita</h3>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <a href="#" class="btn btn-outline-primary">Más información</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 text-center p-4">
-            <div class="card-body">
-              <h3 class="card-title">Matemáticas</h3>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <a href="#" class="btn btn-outline-primary">Más información</a>
-            </div>
-          </div>
-        </div>
+<!-- PROGRAMAS -->
+  
+<section id="programas">
+  <div class="container-padre">
+    <img src="images/educativos.png" alt="Etiqueta educativos" class="imagen-edu">
+    <img src="images/cohete_fuego.png" alt="Cohete despegando" class="imagen-cohetefuego">
+    <img src="images/brain.png" alt="Lapiz" class="imagen-brain">
+
+    <div class="container-contenido">
+      <h2 class="titulo"> <span style="color: #242424;">NUESTROS</span></h2>
+      <h2 class="titulo2"> <span style="color: white;">PROGRAMAS</span></h2>
+      
+<div class="notebook-container">
+  <!-- LECTURA CARD -->
+  <div class="notebook-card card-lectura">
+      <!-- Pestañas -->
+      <div class="notebook-tab right-tab tab-1"></div>
+      <div class="notebook-tab right-tab tab-2"></div>
+      <div class="notebook-tab right-tab tab-3"></div>
+      
+      <div class="card-content">
+          <img src="images/book.png" alt="Libro abierto" class="imagen-card">
+          <h3 class="title-card">Lectura</h3>
+          <p class="txt-card">Lorem ipsum es simplemente texto de relleno de la industria de impresión.</p>
+      </div>
+  </div>
+  
+  <!-- LENGUA ESCRITA CARD -->
+  <div class="notebook-card card-lengua">
+      <!-- Pestañas -->
+      <div class="notebook-tab left-tab tab-1"></div>
+      <div class="notebook-tab left-tab tab-2"></div>
+      <div class="notebook-tab left-tab tab-3"></div>
+      
+      <!-- Pestañas  -->
+      <div class="notebook-tab right-tab tab-1"></div>
+      <div class="notebook-tab right-tab tab-2"></div>
+      <div class="notebook-tab right-tab tab-3"></div>
+      
+      <div class="card-content">
+          <img src="images/lapiz.png" alt="Lapiz" class="imagen-card">
+          <h3 class="title-card">Lengua Escrita</h3>
+          <p class="txt-card">Lorem ipsum es simplemente texto de relleno de la industria de impresión.</p>
+      </div>
+  </div>
+  
+  <!-- MATE CARD -->
+  <div class="notebook-card card-matematicas">
+      <!-- Pestañas  -->
+      <div class="notebook-tab left-tab tab-1"></div>
+      <div class="notebook-tab left-tab tab-2"></div>
+      <div class="notebook-tab left-tab tab-3"></div>
+      
+      <div class="card-content">
+          <img src="images/pi.png" alt="Pi" class="imagen-card">
+          <h3 class="title-card">Matemáticas</h3>
+          <p class="txt-card">Lorem ipsum es simplemente texto de relleno de la industria de impresión.</p>
+      </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESORES -->
+  <section id="profesores">
+    <div class="container-padre">
+      <div class="container-contenido">
+        <h2 class="section-title">
+          <span style="color: white;">PROFESORES</span>
+        </h2>
+        <p>
+          En <span style="font-weight: 600;">GRADIENT</span>, creemos que la mejor preparación viene de quienes han demostrado excelencia en el mismo reto que enfrentarás. <span style="font-weight: 600;">Adrián Felix </span> es prueba de ello. Joven estudiante de Física Matemáticas en la UABC, logró posicionarse en el Top 1 del examen de admisión, demostrando un dominio absoluto de los conocimientos requeridos para ingresar a la universidad. Si alguien sabe cómo superar este desafío, es él. Ahora, está aquí para guiarte a hacer lo mismo.
+        </p>
+        <img src="images/pilabook.png" alt="montaña de libros" class="imagen-pila">
       </div>
     </div>
   </section>
 
-  <!-- Sección Profesores -->
-  <section id="profesores" class="professor-section">
-    <div class="container">
-      <h2 class="section-title">PROFESORES</h2>
-      <div class="row align-items-center">
-        <div class="col-md-5">
-          <img src="/api/placeholder/400/400" alt="Profesor Adrián Felix" class="img-fluid rounded-circle">
-        </div>
-        <div class="col-md-7">
-          <p class="lead">
-            En GRADIENT, creemos que la mejor preparación viene de quienes han
-            demostrado excelencia en el mismo reto que enfrentarás. Adrián Felix es prueba de
-            ello. Joven estudiante de Física Matemáticas en la UABC, logró
-            posicionarse en el Top 1 del examen de admisión, demostrando un dominio
-            absoluto de los conocimientos requeridos para ingresar a la universidad.
-          </p>
-          <p class="fw-bold">
-            Si alguien sabe cómo superar este desafío, es él.
-            Ahora, está aquí para guiarte a hacer lo mismo.
-          </p>
-        </div>
+<!-- CONTACTO -->
+  <section id="contacto" style="margin: 0; padding: 0;">
+    <div class="container-padre">
+      <div class="container-hijo">
+      <h3> Contacto </h3>
+      <h2>¿Tienes alguna pregunta? ¡Estamos aquí para ayudarte! </h2>
+
+      <div class="contact-buttons">
+          <div class="contact-button">
+              <a href="https://wa.me/3171288580" target="_blank">
+                  <div class="icon" style="background-image: url(images/whatsapp.png);"></div>
+                  <span class="text-link">+52 317 128 8580</span>
+              </a>
+          </div>
+
+          <div class="contact-button">
+              <a href="mailto:esi@iteso.mx">
+                  <div class="icon" style="background-image: url(images/mail.png);"></div>
+                  <span class="text-link">esi@iteso.mx</span>
+              </a>
+          </div>
+
+          <div class="contact-button">
+              <a href="tel:3171288580">
+                  <div class="icon" style="background-image: url(images/call.png);"></div>
+                  <span class="text-link">+52 317 128 8580</span>
+              </a>
+          </div>
+      </div>
+    
+      <h1>¡Queremos conocerte!</h1>
+      <h2>Síguenos en nuestras redes sociales y sé parte de nuestra comunidad.</h2>
+
+      <div class="social-container">
+          <div class="social-button">
+              <a href="https://www.youtube.com/user/itesouniversidad" target="_blank">
+                  <div class="social-icon" style="background-image: url(images/youtube.png);"></div>
+              </a>
+          </div>
+          <div class="social-button">
+              <a href="https://www.facebook.com/ITESO/?locale=es_LA" target="_blank">
+                  <div class="social-icon" style="background-image: url(images/fb.png);"></div>
+              </a>
+          </div>
+          <div class="social-button">
+              <a href="https://www.instagram.com/itesouniversidad/?hl=es" target="_blank">
+                  <div class="social-icon" style="background-image: url(images/instagram.png);"></div>
+              </a>
+          </div>
+          <div class="social-button">
+              <a href="https://www.tiktok.com/@itesouniversidad" target="_blank">
+                  <div class="social-icon" style="background-image: url(images/tiktok.png);"></div>
+              </a>
+          </div>
+          </div>
       </div>
     </div>
+
   </section>
 
-  <!-- Sección de Contacto -->
-  <section id="contacto" class="py-5">
-    <div class="container">
-      <h2 class="section-title">CONTÁCTANOS</h2>
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <div class="contact-icon">
-            <i class="fab fa-whatsapp"></i>
-          </div>
-          <h3>WhatsApp</h3>
-          <p>000-123-4567</p>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h3>Correo</h3>
-          <p>micorreo@mail.com</p>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="contact-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3>Redes Sociales</h3>
-          <div class="mt-3">
-            <a href="#" class="text-decoration-none me-3"><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="#" class="text-decoration-none me-3"><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="#" class="text-decoration-none"><i class="fab fa-twitter fa-2x"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
+<!-- FOOTER -->
   <footer>
     <div class="container text-center">
       <p>© 2025 GRADIENT - Todos los derechos reservados</p>
     </div>
+
+<!-- CREDITOS -->
+<div class="names-container">
+  <div id="diego-container" class="name-container">
+    <div class="last-name">LEMUS</div>
+    <div class="first-name">Diego</div>
+  </div>
+  
+  <div id="josue-container" class="name-container">
+    <div class="last-name">GODOY</div>
+    <div class="first-name">Josue</div>
+  </div>
+  
+  <div id="karen-container" class="name-container">
+    <div class="last-name">SANTANA</div>
+    <div class="first-name">Karen</div>
+  </div>
+</div>
+
   </footer>
 
-  <!-- Login Modal -->
+
+  <!-- LOGIN -->
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Iniciar Sesión</h5>
+          <h5 class="modal-title">Ingresar</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label">Correo</label>
               <input type="email" class="form-control" id="email" required>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
+              <label for="password" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="password" required>
             </div>
             <div class="mb-3 text-center">
@@ -233,7 +298,7 @@
     </div>
   </div>
 
-  <!-- Registro Modal -->
+  <!-- REGISTRO -->
   <div class="modal fade" id="registroModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -294,7 +359,7 @@
 
 <script>
 // Lista de emails con permisos de administrador - MODIFICA ESTA LISTA CON TU EMAIL
-const ADMIN_EMAILS = ['josuegodor@gmail.com', 'diegolemus.2015@example.com', 'ADMIN@admin.com']; 
+const ADMIN_EMAILS = ['josuegodor@gmail.com', 'diegolemus.2015@example.com', 'ADMIN@admin.com' ]; 
 
 // Función principal para actualizar los elementos de la interfaz según el estado de autenticación
 async function actualizarUISegunAutenticacion() {
@@ -376,6 +441,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Actualizar la interfaz inmediatamente
     actualizarUISegunAutenticacion();
+
+        document.querySelectorAll('.modal .btn-close, .modal [data-bs-dismiss="modal"]').forEach(button => {
+        button.addEventListener('click', function() {
+            setTimeout(limpiarBackdrop, 300); // Esperar a que termine la animación
+        });
+    });
 });
 
 // Asegurarnos de que se verifique el estado incluso si la página se carga desde caché
@@ -495,6 +566,15 @@ function configurarFormularios() {
     }
 }
 document.addEventListener('DOMContentLoaded', configurarFormularios);
+
+function limpiarBackdrop() {
+  // Eliminar cualquier backdrop
+  document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+  // Quitar clase modal-open del body
+  document.body.classList.remove('modal-open');
+  document.body.style.removeProperty('overflow');
+  document.body.style.removeProperty('padding-right');
+}
 </script>
 
 </body>

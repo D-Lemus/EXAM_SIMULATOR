@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
+    font-family: 'Poppins';
 }
 
 /* ===== SIDEBAR STYLES ===== */
@@ -82,8 +83,7 @@ body {
     margin-bottom: 25px;
 }
 .home-btn {
-    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
-    border-left: 5px solid #FFC107;
+    background: #acd753;
 }
 
 .home-btn:hover {
@@ -99,30 +99,28 @@ body {
     color: white;
     border-radius: 6px;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     padding-left: 20px;
     position: relative;
+    font-family: 'Poppins';
+    font-weight: 400;
     font-size: 14px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
-    font-weight: bold;
     text-decoration: none;
     display: block;
 }
 
 .math-btn {
-    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
-    border-left: 5px solid #e74c3c;
+    background: #6e7cfd;
 }
 
 .language-btn {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-    border-left: 5px solid #f1c40f;
+    background: #ea8ffa;
 }
 
 .science-btn {
-    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-    border-left: 5px solid #3498db;
+    background: #F1CB42;
 }
 
 .math-btn:hover,
@@ -154,18 +152,20 @@ body {
     font-weight: bold;
     color: white;
     margin-bottom: 20px;
-    box-shadow: 0 6px 20px rgba(110, 72, 170, 0.5);
 }
 
 .user-name {
+    font-family: 'Poppins';
     font-size: 28px;
     font-weight: 500;
     margin-bottom: 8px;
 }
 
 .user-email {
-    color: #b0b0b0;
+    font-family: 'Poppins';
+    color: #ffffff;
     font-size: 16px;
+    font-weight: 300;
     margin-bottom: 40px;
 }
 
@@ -186,15 +186,18 @@ body {
     align-items: center;
     margin-bottom: 15px;
     font-size: 18px;
+    font-family: 'Poppins';
 }
 
 .subject-icon {
+    font-family: 'Poppins';
     font-size: 22px;
     margin-right: 10px;
 }
 
 .progress-percent {
-    font-weight: bold;
+    font-family: 'Poppins';
+    font-weight: 500;
 }
 
 .progress-bar {
@@ -216,22 +219,22 @@ body {
 
 /* Progress Fill Colors */
 .math-progress {
-    background: linear-gradient(90deg, #3498db, #2c3e50);
+    background: linear-gradient(90deg, #c7c9f7, #6e7cfd);
     width: 65%;
 }
 
 .language-progress {
-    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    background: linear-gradient(90deg, #f6cafc, #ea8ffa);
     width: 45%;
 }
 
 .science-progress {
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: linear-gradient(90deg, #fdebab, #F1CB42);
     width: 80%;
 }
 
 .total-progress {
-    background: linear-gradient(90deg, #f39c12, #e67e22);
+    background: linear-gradient(90deg, #d5f5a6, #acd753);
     width: 63%;
 }
 
@@ -243,12 +246,12 @@ body {
 }
 
 .total-title {
-    color: #f39c12;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .total-percent {
-    color: #f39c12;
+    color: #acd753;
 }
 
 /* Progress Fill Percentage Display */
@@ -459,13 +462,14 @@ button:disabled {
 
 /* Styles for the logout button in user profile */
 .logout-button {
-    background-color: #e74c3c;
+    background-color: #ff4848;
     color: white;
     border: none;
     padding: 8px 15px;
     border-radius: 6px;
     cursor: pointer;
     margin-top: 15px;
+    font-family: 'Poppins';
     font-weight: 500;
     transition: all 0.3s ease;
     font-size: 14px;
@@ -479,8 +483,7 @@ button:disabled {
 
 /* Styles for the logout button in sidebar */
 .logout-btn {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
-    border-left: 5px solid #f1c40f !important;
+    background: #ff4848;
 }
 
 .logout-btn:hover {

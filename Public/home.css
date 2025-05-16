@@ -1,5 +1,4 @@
-
-  /* -------------------------------------------------  FONTS */
+/* -------------------------------------------------  FONTS */
 
 @font-face {
     font-family: 'Robson';
@@ -8,165 +7,139 @@
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'Against';
+  src: url(fonts/Against.otf) format('opentype');
+  font-weight: light;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aesthetic';
+  src: url(fonts/Aesthetic.otf) format('opentype');
+  font-weight: light;
+  font-style: normal;
+}
+
 /* Estilos generales */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-  }
-  
-  /* Sección Hero */
-  .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
-    color: white;
-    padding: 100px 0;
-    text-align: center;
-  }
-  
-  .hero-text h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .hero-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-  }
-  
-  /* Títulos de sección */
-  .section-title {
+  font-family: 'Poppins', Tahoma, sans-serif;
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* Títulos de sección */
+.section-title {
     text-align: center;
     margin-bottom: 50px;
     position: relative;
-  }
-
+}
   
-  /* Tarjetas de programas */
-  .card {
-    border: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  }
   
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-  }
-  
-  /* Sección de profesores */
-  .professor-section {
-    background-color: #f8f9fa;
-    padding: 80px 0;
-  }
-  
-  /* Sección de contacto */
-  .contact-icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #0d6efd;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #212529;
-    color: white;
-    padding: 30px 0;
-  }
-  
-  /* Botones */
-  .btn-primary {
+/* Botones */
+.btn-primary {
     padding: 10px 25px;
     font-weight: 600;
-  }
+}
 
-  .btn-ingresar {
+.btn-ingresar {
     padding: 10px 25px;
     font-weight: 600;
     background-color: #f1cb42;
     border-color: #f1cb42; 
     color: white !important;
-    }
+}
 
-    .btn-ingresar:hover {
-        background-color: #acd753 !important;
-        border-color: #acd753 !important;
-    }
-  /* -------------------------------------------------  SECCIÓN DE ENCABEZADO */
-    .fondo-portada{
-        background-image: url(images/fondo_textura.png);
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-        background-size: cover; 
-        background-repeat: no-repeat; 
-        background-position: center center;
-        }
+.btn-ingresar:hover {
+    background-color: #acd753 !important;
+    border-color: #acd753 !important;
+}
 
-    .fondo-portada img {
-        position: absolute; 
-        
-    }
+/* -------------------------------------------------  SECCIÓN DE ENCABEZADO */
+.fondo-portada {
+    background-image: url(images/fondo_textura.png);
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center;
+}
 
-    .imagen-text{
-        top: 45%;
-        left: 50%;
-        transform: translate(-50%, -50%); 
-        z-index: 1;
-        width: auto;
-        height: auto;
-        max-width: 90%;
-        max-height: 90%;
-    }
+.fondo-portada img {
+    position: absolute; 
+}
 
-    .imagen-cohete {
-        top: 10%;
-        left: 5%;
-        z-index: 1;
-        width: auto;
-        height: auto;
-        max-width: 35%;
-        max-height: 35%;
-    }
+.imagen-text {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
 
-    .imagen-planeta {
-        top: 8%;
-        right: 5%;
-        z-index: 1;
-        width: auto;
-        height: auto;
-        max-width: 30%;
-        max-height: 30%; 
-    }
+.imagen-cohete {
+    top: 10%;
+    left: 5%;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    max-width: 35%;
+    max-height: 35%;
+}
 
-    .imagen-reloj {
-        top: 62%;
-        left: 10%;
-        z-index: 2;
-        width: auto;
-        height: auto;
-        max-width: 30%;
-        max-height: 30%; 
+.imagen-planeta {
+    top: 8%;
+    right: 5%;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    max-width: 30%;
+    max-height: 30%; 
+}
 
-    }
+.imagen-reloj {
+    top: 62%;
+    left: 10%;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    max-width: 30%;
+    max-height: 30%; 
+}
 
-    .imagen-libro {
-        top: 60%;
-        right: 8%;
-        z-index: 2;
-        width: auto;
-        height: auto;
-        max-width: 30%;
-        max-height: 30%; 
-    }
+.imagen-libro {
+    top: 60%;
+    right: 8%;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    max-width: 30%;
+    max-height: 30%; 
+}
 
-    /* -------------------------------------------------  SECCIÓN DE NOSOTROS */
 /* -------------------------------------------------  SECCIÓN DE NOSOTROS */
 #sobre-nosotros {
   display: block;
@@ -191,9 +164,9 @@ body {
 }
 
 .imagen-megafono {
-  position: absolute; /* Añade esta propiedad */
-  top: 10%;
-  right: 32%;
+  position: absolute;
+  top: 8%;
+  right: 28%;
   z-index: 1;
   width: auto;
   height: auto;
@@ -201,7 +174,6 @@ body {
   max-height: 35%;
 }
 
-/* Estilos para el contenedor interno */
 #sobre-nosotros .container-hijo {
   margin: 0;
   background-color: #242424;
@@ -212,11 +184,11 @@ body {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px; 
   overflow: hidden;
-  position: relative; /* Esto es importante para que funcione el posicionamiento absoluto */
+  position: relative;
 }
 
 .imagen-chat {
-   position: absolute; /* Añade esta propiedad */
+   position: absolute;
    top: 40%;
    right: 5%;
    z-index: 1;
@@ -226,13 +198,13 @@ body {
    max-height: 20;
 }
 
-
 #sobre-nosotros .section-title {
   font-family: 'Robson', sans-serif;
   font-size: 8rem; 
   text-align: left; 
   margin-bottom: 1rem;
   margin-top: 0;
+  margin-left: 3rem;
 }
 
 #sobre-nosotros p {
@@ -243,228 +215,619 @@ body {
   margin-bottom: 1rem;
 }
 
+/* ----------------------------------------------------------------- Profesores */
+#profesores .container-padre {
+  margin: 0;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  background-image: url(images/fondo_textura.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  width: 100%;
+}
   
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .hero-text {
-    animation: fadeIn 1.5s ease-in-out;
-  }
-  
-  /* Estilos para los modales */
-  .modal-content {
-    border-radius: 10px;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  }
-  
-  .modal-header {
-    border-bottom: 2px solid #0d6efd;
-  }
-  
-  /* Estilos para la navegación */
-  .navbar {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-  }
-  
-  .nav-link {
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    color: #0d6efd !important;
-  }
-  
-  /* Estilos para enlaces */
-  a {
-    transition: all 0.3s ease;
-  }
-  
-  a:hover {
-    text-decoration: none;
-  }
+#profesores .container-contenido {
+  margin: 0;
+  padding-top: 5rem;
+  padding-left: 5rem;
+  padding-right: 25rem;
+  padding-bottom: 5rem;
+  background-color: #242424;
+  overflow: hidden;
+  position: relative;
+}
 
+#profesores .section-title {
+  font-family: 'Robson', sans-serif;
+  font-size: 8rem; 
+  text-align: left; 
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
 
+#profesores p {
+  font-family: 'Poppins', sans-serif;
+  text-align: justify;
+  color: white;
+  font-weight: 300;
+}
 
-/* ----------------------------- LOGIN */
-/* Estilos para el contenedor principal del modal de login */
+.imagen-pila {
+  position: absolute; 
+  top: 30%;
+  right: 4%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 60%;
+  max-height: 60%;
+}
+  
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  
+.hero-text {
+  animation: fadeIn 1.5s ease-in-out;
+}
+  
+/* Estilos para los modales */
+.modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+  
+
+/* Estilos para la navegación */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+  
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+  
+.nav-link {
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+  
+  
+/* Estilos para enlaces */
+a {
+  transition: all 0.3s ease;
+}
+  
+a:hover {
+  text-decoration: none;
+}
+
+/* ---------------------------------------------- LOGIN */
 #loginModal .modal-content {
-  background-color: #fdd835; /* Amarillo similar al de la imagen */
-  color: black; /* Texto negro */
-  border-radius: 15px; /* Bordes más redondeados */
-  padding: 30px; /* Más espacio interior */
+  background-color: #f1cb42;
+  color: black; 
+  border-radius: 15px; 
+  padding: 20px;
 }
 
-/* Estilo para el título "Iniciar Sesión" (si aún lo tienes) */
 #loginModal .modal-header .modal-title {
-  color: black;
-  font-weight: bold;
-  font-size: 2rem; /* Tamaño de fuente más grande */
-  text-transform: uppercase; /* En mayúsculas como "LOG IN" */
-  margin-bottom: 20px; /* Espacio debajo del título */
+  color: white;
+  font-family: 'Robson';
+  letter-spacing: 2px;
+  font-size: 48px;
 }
 
-/* Ocultar el encabezado por defecto si solo quieres "LOG IN" en el body */
-#loginModal .modal-header {
-  display: none;
-}
-
-/* Estilo para la etiqueta "Email" */
 #loginModal .form-label[for="email"] {
   color: black;
-  font-weight: bold; /* Etiqueta en negrita */
-  display: block; /* Para que ocupe toda la línea */
+  font-family: 'Poppins';
+  font-weight: 500;
+  display: block; 
   margin-bottom: 5px;
+  font-size: 18px;
 }
 
-/* Estilo para el campo de entrada de Email */
 #loginModal #email {
   background-color: white;
   border: none;
-  border-radius: 10px; /* Bordes más redondeados */
-  padding: 12px; /* Más padding */
-  margin-bottom: 20px; /* Espacio debajo del campo */
+  border-radius: 20px; 
+  padding: 12px;
+  margin-bottom: 20px;
   color: black;
 }
 
-/* Estilo para la etiqueta "Password" */
 #loginModal .form-label[for="password"] {
   color: black;
-  font-weight: bold;
+  font-family: 'Poppins';
+  font-weight: 500;
   display: block;
   margin-bottom: 5px;
+  font-size: 18px;
 }
 
-/* Estilo para el campo de entrada de Password */
 #loginModal #password {
   background-color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 12px;
-  margin-bottom: 25px; /* Más espacio antes del botón */
+  margin-bottom: 25px;
   color: black;
 }
 
-/* Estilo para el botón "Entrar" */
 #loginModal .modal-body .btn-primary {
-  background-color: #ff9800; /* Naranja similar */
+  background-color: #6e7cfb;
   border: none;
-  border-radius: 10px;
+  font-family: 'Poppins';
+  font-weight: 500;
+  border-radius: 20px;
   color: white;
-  padding: 12px 25px; /* Más padding horizontal */
-  font-weight: bold;
-  text-transform: uppercase;
+  padding: 12px 25px;
 }
 
-/* Estilo para el botón "Entrar" al pasar el ratón */
 #loginModal .modal-body .btn-primary:hover {
-  background-color: #f57c00; /* Tono más oscuro al pasar el ratón */
+  background-color: #3f4dcc;
+  border: none;
 }
 
-/* Estilo para el contenedor del enlace "¿No tienes cuenta?" */
 #loginModal .modal-body .text-center p {
-  margin-top: 15px; /* Espacio sobre el texto */
+  margin-top: 15px;
+  font-family: 'Poppins';
+  font-weight: 400;
 }
 
-/* Estilo para el enlace "Regístrate" */
 #loginModal .modal-body .text-center a {
-  color: #1976d2; /* Un azul similar al de los enlaces */
-  font-weight: bold;
-  text-decoration: none; /* Opcional: quitar el subrayado por defecto */
+  color: black;
+  font-family: 'Poppins';
+  font-weight: 600;
+  text-decoration: none;
 }
 
 #loginModal .modal-body .text-center a:hover {
-  text-decoration: underline; /* Opcional: agregar subrayado al pasar el ratón */
-}
-
-/* Estilo adicional para el texto "LOG IN" si lo quieres directamente en el body */
-#loginModal .modal-body h3 {
-  color: black;
-  font-weight: bold;
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  text-align: center; /* Centrar el "LOG IN" */
+  text-decoration: underline; 
 }
 
 /* ------------------------------ REGISTRO */
-
-/* Estilos para el contenedor principal del modal de registro */
 #registroModal .modal-content {
-  background-color: #a890fe; /* Un tono de morado similar al de la imagen */
-  color: white; /* Texto blanco para contrastar */
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 20px; /* Espacio interior */
+  background-color: #6e7cfb; 
+  color: white; 
+  border-radius: 10px;
+  padding: 20px; 
 }
 
-/* Estilo para el encabezado del modal */
 #registroModal .modal-header {
-  border-bottom: none; /* Elimina la línea divisoria del encabezado */
-  padding-bottom: 0; /* Reduce el espacio inferior del encabezado */
+  border-bottom: none; 
+  padding-bottom: 0; 
 }
 
-/* Estilo para el título del modal */
 #registroModal .modal-title {
   color: white;
-  font-weight: bold; /* Texto en negrita */
-  font-size: 1.5rem; /* Tamaño de fuente más grande */
-  text-transform: uppercase; /* Texto en mayúsculas como en la imagen */
+  font-family: 'Robson';
+  letter-spacing: 2px;
+  font-size: 48px;
 }
 
-/* Estilo para el botón de cerrar del modal */
-#registroModal .btn-close {
-  filter: invert(1); /* Invierte los colores para que sea blanco */
-  opacity: 1; /* Asegura que sea completamente visible */
-}
-
-/* Estilo para las etiquetas de los campos */
 #registroModal .form-label {
-  color: white;
-  margin-bottom: 5px; /* Espacio debajo de la etiqueta */
-  font-size: 0.9rem; /* Tamaño de fuente un poco más pequeño */
+  color: black;
+  font-family: 'Poppins';
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-/* Estilo para los campos de entrada */
 #registroModal .form-control {
   background-color: white;
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes ligeramente redondeados */
-  padding: 0.75rem; /* Espacio interior del campo */
-  color: #333; /* Color de texto oscuro para la entrada */
+  border: none;
+  border-radius: 20px; 
+  padding: 0.75rem;
+  color: #333; 
 }
 
-/* Estilo para el botón de "REGISTRATE AHORA" */
 #registroModal .modal-body .btn-primary {
-  background-color: #ffc107; /* Amarillo como en la imagen */
-  border-color: #ffc107;
-  color: #333; /* Texto oscuro */
-  font-weight: bold;
-  border-radius: 5px;
-  padding: 0.75rem 1.5rem; /* Más padding horizontal */
-  text-transform: uppercase; /* Texto en mayúsculas */
-}
-
-/* Estilo para el botón de "REGISTRATE AHORA" cuando el cursor está encima */
-#registroModal .modal-body .btn-primary:hover {
-  background-color: #e0a800; /* Tono más oscuro al pasar el ratón */
+  background-color: #e0a800; 
   border-color: #e0a800;
+  color: black;
+  font-family: 'Poppins';
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem; 
 }
 
-/* Estilo para los contenedores de las filas (para espaciado) */
+#registroModal .modal-body .btn-primary:hover {
+  background-color: #b38600;
+  border-color: #b38600;
+}
+
 #registroModal .row.mb-3 > div {
-  margin-bottom: 10px; /* Espacio entre los campos en la misma fila */
+  margin-bottom: 10px;
 }
 
+/*--------------------------------Libretas*/
+#programas {
+  display: block;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+.imagen-cohetefuego {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 45%;
+  max-height: 45%;
+}
+
+.imagen-brain {
+  position: absolute; 
+  bottom: -15%;
+  left: 0%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 30%;
+  max-height: 30%;
+}
+
+.imagen-edu {
+  position: absolute;
+  top: 1%;
+  left: 43%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 60%;
+  max-height: 60%;
+  transform: rotate(-8deg);
+}
+
+#programas .container-padre {
+  margin: 0;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  background-image: url(images/fondo_textura.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  width: 100%;
+}
+
+#programas .container-contenido {
+  margin: 0;
+  background-color: #242424;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.titulo {
+  font-family: 'Robson', sans-serif;
+  font-size: 5rem; 
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: 5rem;
+  margin-bottom: -2rem;
+  -webkit-text-stroke: 1px white; 
+}
+
+.titulo2 {
+  font-family: 'Robson', sans-serif;
+  font-size: 8rem; 
+  text-align: left; 
+  margin-left: 5rem;
+}
+
+.notebook-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* Tarjeta tipo libreta */
+.notebook-card {
+  width: 310px;
+  height: 330px;
+  border-radius: 12px;
+  position: relative;
+  overflow: visible;
+  background-image: url(images/fondoCard.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Pestañas laterales */
+.notebook-tab {
+  position: absolute;
+  width: 35px;
+  height: 15px;
+  background-color: #242424;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* Posición de las pestañas izqui */
+.left-tab {
+  left: -10px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Posición de las pestañas der */
+.right-tab {
+  right: -10px;
+  border-radius: 8px 0 0 8px;
+}
+
+/* Posiciones verticales de las pestañas */
+.tab-1 { top: 54px; }
+.tab-2 { top: 154px; }
+.tab-3 { top: 254px; }
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 30px;
+  padding-top: 1px;
+  padding-bottom: 8px;
+  padding-right: 30px;
+}
+
+.card-lectura {
+  background-color: #f1cb42;
+}
+
+.card-lengua {
+  background-color: #6e7cfb;
+}
+
+.card-matematicas {
+  background-color: #f19fff;
+}
+
+.imagen-card {
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: 80%;
+  max-height: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+.title-card {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+  color: #242424;
+  text-align: left;
+}
+
+.txt-card {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #242424;
+  text-justify: left;
+}
+
+/* ---------------------------------- CONTACTO */
+#contacto .container-padre {
+  margin: 0;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-bottom: 5rem;
+  background-image: url(images/fondo_textura.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  width: 100%;
+}
+
+#contacto .container-hijo {
+  margin: 0;
+  background-color: #242424;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px; 
+  overflow: hidden;
+  position: relative;
+}
+
+#contacto h1 {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#contacto h2 {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  padding-bottom: 1rem;
+}
+
+#contacto h3 {
+  font-family: 'Robson';
+  text-align: center;
+  color: white;
+  font-size: 100px;
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 90px;
+  margin-top: 40px;
+}
+
+.contact-button {
+  position: relative;
+  width: 180px;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: #6c7cff; 
+}
+
+.contact-button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.contact-button .icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-button .text-link {
+  display: none;
+  font-size: 16px;
+  color: white;
+  font-family: 'Poppins';
+  font-weight: 400;
+}
+
+.contact-button:hover .icon {
+  display: none;
+}
+
+.contact-button:hover .text-link {
+  display: block;
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+}
+
+.social-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.social-icon {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------------- BAJO */
+.names-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  gap: 60px; 
+  width: 100%;
+  padding: 20px 0;
+}
+
+.name-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  height: 80px; 
+  width: 200px; 
+}
+
+.last-name {
+  font-family: 'Against';
+  font-size: 28px;
+  opacity: 0.2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+.first-name {
+  position: relative;
+  z-index: 2;
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#diego-container .last-name {
+  color: #acd753;
+}
+
+#josue-container .last-name {
+  color: #f1cb42;
+}
+
+#karen-container .last-name {
+  color: #f19fff;
+}
+
+/* Footer */
+footer {
+    background-color: #212529;
+    color: white;
+    padding: 30px 0;
+}
