@@ -1,37 +1,38 @@
-// AI Tutor Integration for UABC Entrance Exam
-// This script handles the ChatGPT API integration for personalized explanations
+// Integracion del Tutor IA para el Examen de Admision UABC
+// Este script maneja la integracion de la API ChatGPT para explicaciones personalizadas
 
-// Function to request AI tutor explanation
+// Funcion para solicitar explicacion del tutor IA
 function requestAITutor(questionText, userAnswer, correctAnswer, responseContainer) {
-    // Show loading state
-    responseContainer.innerHTML = '<div class="loading">AI tutor is thinking...</div>';
+    // Mostrar estado de carga
+    responseContainer.innerHTML = '<div class="loading">El tutor IA está pensando...</div>';
     responseContainer.style.display = 'block';
 
-    // Make API request to ChatGPT
+    // Solicitud a la API de ChatGPT
     fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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' // Replace with your actual API key
+            'Authorization': 'Bearer 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' 
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
             messages: [
                 {
                     role: 'system',
-                    content: 'You are an AI tutor helping university entrance exam students understand questions they got wrong. Be encouraging, clear, and educational in your explanations.'
+                    content: 'Eres un tutor de IA que ayuda a estudiantes a entender preguntas que han respondido incorrectamente en su examen de admision universitaria. Sé alentador, claro y educativo en tus explicaciones.'
                 },
                 {
                     role: 'user',
-                    content: `I'm studying for my university entrance exam and need help understanding this question:
+                    content: `Estoy estudiando para mi examen de admision a la universidad y necesito ayuda para entender esta pregunta:
                     
-Question: ${questionText}
-My answer: ${userAnswer}
-Correct answer: ${correctAnswer}
+Pregunta: ${questionText}
+Mi respuesta: ${userAnswer}
+Respuesta correcta: ${correctAnswer}
 
-Can you explain why my answer is incorrect and why the correct answer is right? Please provide a clear, educational explanation that will help me understand the concept better.
-When providing math questions i need you to use a format that is clear & spacious for the user. Dont over explain things and try to be as brief but as clear as possible. If the answer is just a fact try to be as extremely brief as possible
-as it is an answer that doesnt even require long explanation.`
+¿Puedes explicarme por qué mi respuesta es incorrecta y por qué la respuesta correcta es la adecuada? Por favor, proporciona una explicacion clara y educativa que me ayude a entender mejor el concepto.
+Cuando expliques preguntas de matemáticas, necesito que uses un formato claro y espaciado. No sobre-expliques y trata de ser tan breve pero claro como sea posible. Si la respuesta es simplemente un dato, sé extremadamente breve ya que es una respuesta que ni siquiera requiere una explicacion larga.
+.Quiero que me proporciones esto en un formato de parrafo, como si fuera una conversacion (ejemplo: Tu respuesta "[respuesta incorrecta]" no es adecuada por.... . La respuesta "[correcta]" es adecuada en esta ocasion por...) 
+puedes utilizar palabras similares pero sin dejar esa estructura.`
                 }
             ],
             max_tokens: 500
@@ -39,37 +40,37 @@ as it is an answer that doesnt even require long explanation.`
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('La respuesta de red no fue correcta');
         }
         return response.json();
     })
     .then(data => {
         if (data.choices && data.choices[0] && data.choices[0].message) {
-            // Display the AI's explanation
+            // Mostrar la explicacion de la IA
             const explanation = data.choices[0].message.content;
             responseContainer.innerHTML = `
-                <h4>AI Tutor Explanation:</h4>
+                <h4>Explicacion del Tutor IA:</h4>
                 <p>${formatExplanation(explanation)}</p>
             `;
         } else {
-            throw new Error('Unexpected response format from API');
+            throw new Error('Formato de respuesta inesperado de la API');
         }
     })
     .catch(error => {
         console.error('Error:', error);
         responseContainer.innerHTML = `
             <div class="error">
-                <p>Sorry, there was an error getting your explanation. Please try again later.</p>
-                <p>Error details: ${error.message}</p>
+                <p>Lo sentimos, hubo un error al obtener tu explicacion. Por favor, inténtalo de nuevo más tarde.</p>
+                <p>Detalles del error: ${error.message}</p>
             </div>
         `;
     });
 }
 
-// Helper function to format the explanation with paragraphs
+// Funcion auxiliar para formatear la explicacion con párrafos
 function formatExplanation(text) {
     return text.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
 }
 
-// Log that the AI tutor script is loaded
-console.log('AI Tutor script loaded successfully');
+// Registrar que el script del tutor IA se ha cargado correctamente
+console.log('Script del Tutor IA cargado exitosamente');

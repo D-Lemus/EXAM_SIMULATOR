@@ -2,141 +2,260 @@
     {
         "id": "lang_q1",
         "text": "¿Cuál es el sinónimo de \"felicidad\"?",
-        "options": ["Tristeza", "Alegría", "Dolor", "Enojo"],
+        "options": [
+            "Miedo",
+            "Alegría",
+            "Dolor",
+            "Enojo"
+        ],
         "correctAnswer": 1,
         "defaultFeedback": "Alegría es sinónimo de felicidad."
     },
     {
         "id": "lang_q2",
         "text": "¿Cuál es el antónimo de \"oscuro\"?",
-        "options": ["Sombrío", "Claro", "Tenebroso", "Negro"],
+        "options": [
+            "Sombrío",
+            "Claro",
+            "Tenebroso",
+            "Negro"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "Claro es lo contrario de oscuro."
+        "defaultFeedback": "Claro es lo contrario de oscuro.",
+        "_id": "681bd21f7cbf221738a8663d"
     },
     {
         "id": "lang_q3",
         "text": "Selecciona la palabra correctamente escrita:",
-        "options": ["Escepción", "Exepción", "Excepción", "Essepcción"],
+        "options": [
+            "Escepción",
+            "Exepción",
+            "Excepción",
+            "Essepcción"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "La forma correcta es \"Excepción\"."
+        "defaultFeedback": "La forma correcta es \"Excepción\".",
+        "_id": "681bd21f7cbf221738a8663e"
     },
     {
         "id": "lang_q4",
         "text": "¿Qué tipo de palabra es \"rápidamente\"?",
-        "options": ["Adjetivo", "Sustantivo", "Verbo", "Adverbio"],
+        "options": [
+            "Adjetivo",
+            "Sustantivo",
+            "Verbo",
+            "Adverbio"
+        ],
         "correctAnswer": 3,
-        "defaultFeedback": "\"Rápidamente\" es un adverbio de modo."
+        "defaultFeedback": "\"Rápidamente\" es un adverbio de modo.",
+        "_id": "681bd21f7cbf221738a8663f"
     },
     {
         "id": "lang_q5",
         "text": "¿Cuál es el sujeto en la oración: \"El perro ladra fuerte\"?",
-        "options": ["El", "ladra", "El perro", "ladra fuerte"],
+        "options": [
+            "El",
+            "ladra",
+            "El perro",
+            "ladra fuerte"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "El sujeto es \"El perro\"."
+        "defaultFeedback": "El sujeto es \"El perro\".",
+        "_id": "681bd21f7cbf221738a86640"
     },
     {
         "id": "lang_q6",
         "text": "¿Qué palabra completa correctamente la oración: \"____ voy al cine\"?",
-        "options": ["Vámos", "Vamos", "Bamos", "Vamoz"],
+        "options": [
+            "Vámos",
+            "Vamos",
+            "Bamos",
+            "Vamoz"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "La forma correcta es \"Vamos\"."
+        "defaultFeedback": "La forma correcta es \"Vamos\".",
+        "_id": "681bd21f7cbf221738a86641"
     },
     {
         "id": "lang_q7",
         "text": "¿Qué significa la palabra \"benevolente\"?",
-        "options": ["Malicioso", "Generoso", "Violento", "Indiferente"],
+        "options": [
+            "Malicioso",
+            "Generoso",
+            "Violento",
+            "Indiferente"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "\"Benevolente\" significa generoso o bondadoso."
+        "defaultFeedback": "\"Benevolente\" significa generoso o bondadoso.",
+        "_id": "681bd21f7cbf221738a86642"
     },
     {
         "id": "lang_q8",
         "text": "Selecciona la opción con todas las palabras agudas:",
-        "options": ["Corazón, café, árbol", "Camión, sofá, papel", "Lápiz, difícil, fácil", "Silla, casa, coche"],
+        "options": [
+            "Corazón, café, árbol",
+            "Camión, sofá, papel",
+            "Lápiz, difícil, fácil",
+            "Silla, casa, coche"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "Las agudas llevan tilde si terminan en n, s o vocal. Camión, sofá y papel son agudas."
+        "defaultFeedback": "Las agudas llevan tilde si terminan en n, s o vocal. Camión, sofá y papel son agudas.",
+        "_id": "681bd21f7cbf221738a86643"
     },
     {
         "id": "lang_q9",
         "text": "¿Cuál es una característica de las oraciones interrogativas?",
-        "options": ["Terminan con punto", "Usan signos de interrogación", "Describen acciones", "Expresan órdenes"],
+        "options": [
+            "Terminan con punto",
+            "Usan signos de interrogación",
+            "Describen acciones",
+            "Expresan órdenes"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "Las oraciones interrogativas usan signos de interrogación."
+        "defaultFeedback": "Las oraciones interrogativas usan signos de interrogación.",
+        "_id": "681bd21f7cbf221738a86644"
     },
     {
         "id": "lang_q10",
         "text": "¿Qué tipo de texto es una receta de cocina?",
-        "options": ["Narrativo", "Descriptivo", "Expositivo", "Instructivo"],
+        "options": [
+            "Narrativo",
+            "Descriptivo",
+            "Expositivo",
+            "Instructivo"
+        ],
         "correctAnswer": 3,
-        "defaultFeedback": "Una receta es un texto instructivo."
+        "defaultFeedback": "Una receta es un texto instructivo.",
+        "_id": "681bd21f7cbf221738a86645"
     },
     {
         "id": "lang_q11",
         "text": "¿Cuál de estas palabras es un sustantivo abstracto?",
-        "options": ["Mesa", "Belleza", "Silla", "Libro"],
+        "options": [
+            "Mesa",
+            "Belleza",
+            "Silla",
+            "Libro"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "Belleza es un sustantivo abstracto."
+        "defaultFeedback": "Belleza es un sustantivo abstracto.",
+        "_id": "681bd21f7cbf221738a86646"
     },
     {
         "id": "lang_q12",
         "text": "¿Cuál es el plural de \"papá\"?",
-        "options": ["Papas", "Papás", "Papáes", "Papases"],
+        "options": [
+            "Papas",
+            "Papás",
+            "Papáes",
+            "Papases"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "El plural correcto de papá es papás."
+        "defaultFeedback": "El plural correcto de papá es papás.",
+        "_id": "681bd21f7cbf221738a86647"
     },
     {
         "id": "lang_q13",
         "text": "¿Qué signo de puntuación se usa para separar elementos en una lista?",
-        "options": ["Punto y coma", "Dos puntos", "Coma", "Paréntesis"],
+        "options": [
+            "Punto y coma",
+            "Dos puntos",
+            "Coma",
+            "Paréntesis"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "Se usa la coma para separar elementos de una lista."
+        "defaultFeedback": "Se usa la coma para separar elementos de una lista.",
+        "_id": "681bd21f7cbf221738a86648"
     },
     {
         "id": "lang_q14",
         "text": "¿Cuál es la forma correcta del verbo en la oración: \"Mañana ellos ____ al parque\"?",
-        "options": ["irán", "irían", "van", "fueron"],
+        "options": [
+            "irán",
+            "irían",
+            "van",
+            "fueron"
+        ],
         "correctAnswer": 0,
-        "defaultFeedback": "\"Irán\" está en futuro simple, adecuado para \"mañana\"."
+        "defaultFeedback": "\"Irán\" está en futuro simple, adecuado para \"mañana\".",
+        "_id": "681bd21f7cbf221738a86649"
     },
     {
         "id": "lang_q15",
         "text": "¿Cuál es la forma correcta de \"haber\" en la oración: \"Debe ____ más opciones\"?",
-        "options": ["haber", "aver", "a ver", "abér"],
+        "options": [
+            "haber",
+            "aver",
+            "a ver",
+            "abér"
+        ],
         "correctAnswer": 0,
-        "defaultFeedback": "\"Haber\" es el verbo correcto en este contexto."
+        "defaultFeedback": "\"Haber\" es el verbo correcto en este contexto.",
+        "_id": "681bd21f7cbf221738a8664a"
     },
     {
         "id": "lang_q16",
         "text": "¿Qué tipo de texto busca convencer al lector?",
-        "options": ["Narrativo", "Descriptivo", "Argumentativo", "Expositivo"],
+        "options": [
+            "Narrativo",
+            "Descriptivo",
+            "Argumentativo",
+            "Expositivo"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "El texto argumentativo intenta persuadir o convencer."
+        "defaultFeedback": "El texto argumentativo intenta persuadir o convencer.",
+        "_id": "681bd21f7cbf221738a8664b"
     },
     {
         "id": "lang_q17",
         "text": "¿Cuál es el antónimo de \"valiente\"?",
-        "options": ["Heroico", "Temeroso", "Osado", "Intrépido"],
+        "options": [
+            "Heroico",
+            "Temeroso",
+            "Osado",
+            "Intrépido"
+        ],
         "correctAnswer": 1,
-        "defaultFeedback": "\"Temeroso\" es lo contrario de \"valiente\"."
+        "defaultFeedback": "\"Temeroso\" es lo contrario de \"valiente\".",
+        "_id": "681bd21f7cbf221738a8664c"
     },
     {
         "id": "lang_q18",
         "text": "¿Cuál es la función del punto y coma (;) en un texto?",
-        "options": ["Finalizar una oración", "Unir ideas opuestas", "Separar oraciones relacionadas", "Indicar duda"],
+        "options": [
+            "Finalizar una oración",
+            "Unir ideas opuestas",
+            "Separar oraciones relacionadas",
+            "Indicar duda"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "El punto y coma separa oraciones relacionadas."
+        "defaultFeedback": "El punto y coma separa oraciones relacionadas.",
+        "_id": "681bd21f7cbf221738a8664d"
     },
     {
         "id": "lang_q19",
         "text": "¿Cuál palabra tiene un error ortográfico?",
-        "options": ["Correré", "Cansancio", "Vasío", "Gritó"],
+        "options": [
+            "Correré",
+            "Cansancio",
+            "Vasío",
+            "Gritó"
+        ],
         "correctAnswer": 2,
-        "defaultFeedback": "\"Vasío\" está mal escrito, lo correcto es \"Vacío\"."
+        "defaultFeedback": "\"Vasío\" está mal escrito, lo correcto es \"Vacío\".",
+        "_id": "681bd21f7cbf221738a8664e"
     },
     {
         "id": "lang_q20",
         "text": "¿Cuál es la forma correcta de acentuación para \"limite\"?",
-        "options": ["limité", "limite", "límité", "límite"],
+        "options": [
+            "limité",
+            "limite",
+            "límité",
+            "límite"
+        ],
         "correctAnswer": 3,
-        "defaultFeedback": "La palabra correcta es \"límite\", con tilde en la primera sílaba."
+        "defaultFeedback": "La palabra correcta es \"límite\", con tilde en la primera sílaba.",
+        "_id": "681bd21f7cbf221738a8664f"
     }
 ]

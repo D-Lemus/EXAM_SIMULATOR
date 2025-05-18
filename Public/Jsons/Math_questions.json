@@ -3,39 +3,14 @@
         "id": "math_q1",
         "text": "¿Cuál es el resultado de 8 + 12 ÷ 4?",
         "options": [
-            "6",
+            "9",
             "14",
             "11",
             "16"
         ],
         "correctAnswer": 2,
-        "defaultFeedback": "Primero se divide: 12 ÷ 4 = 3. Luego se suma: 8 + 3 = 11."
-    },
-    {
-        "id": "math_q2",
-        "text": "¿Qué número falta en la secuencia: 2, 4, 8, __, 32?",
-        "options": [
-            "10",
-            "12",
-            "16",
-            "24"
-        ],
-        "correctAnswer": 2,
-        "defaultFeedback": "Cada número se multiplica por 2: 8 × 2 = 16.",
-        "_id": "681bd1f57cbf221738a86524"
-    },
-    {
-        "id": "math_q3",
-        "text": "Resuelve: 3x − 4 = 11",
-        "options": [
-            "x = 5",
-            "x = 3",
-            "x = 4",
-            "x = 6"
-        ],
-        "correctAnswer": 0,
-        "defaultFeedback": "3x = 11 + 4 = 15. Luego, x = 15 ÷ 3 = 5.",
-        "_id": "681bd1f57cbf221738a86525"
+        "defaultFeedback": "Primero se divide: 12 ÷ 4 = 3. Luego se suma: 8 + 3 = 11.",
+        "_id": "68273c0a521f838b5ca89beb"
     },
     {
         "id": "math_q4",
