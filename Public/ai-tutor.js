@@ -12,8 +12,7 @@ function requestAITutor(questionText, userAnswer, correctAnswer, responseContain
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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' 
-        },
+            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`        },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
             messages: [

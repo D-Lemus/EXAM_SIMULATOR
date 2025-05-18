@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Exam simulator with chat GPT integrations",
   "main": "server.js",
+  "engines": {
+    "node": "20.11.1"
+  },
   "dependencies": {
     "accepts": "^2.0.0",
     "bcrypt": "^5.1.1",
