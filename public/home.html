@@ -123,8 +123,8 @@
       <div class="notebook-tab right-tab tab-3"></div>
       
       <div class="card-content">
-          <img src="images/book.png" alt="Libro abierto" class="imagen-card">
-          <h3 class="title-card">Lectura</h3>
+          <img src="images/tierra.png" alt="Libro abierto" class="imagen-card">
+          <h3 class="title-card">Ciencias</h3>
           <p class="txt-card">Lorem ipsum es simplemente texto de relleno de la industria de impresión.</p>
       </div>
   </div>
@@ -354,46 +354,45 @@
       });
     });
   </script>
-  <!-- Scripts de autenticación -->
+  <!-- Scripts de autenticacion -->
 <script src="auth.js"></script>
 
 <script>
-// Lista de emails con permisos de administrador - MODIFICA ESTA LISTA CON TU EMAIL
+// emails con permisos de administrador
 const ADMIN_EMAILS = ['josuegodor@gmail.com', 'diegolemus.2015@example.com', 'ADMIN@admin.com' ]; 
 
-// Función principal para actualizar los elementos de la interfaz según el estado de autenticación
+//actualizar los elementos de la interfaz si eres admin
 async function actualizarUISegunAutenticacion() {
     try {
         console.log("Verificando estado de autenticación...");
         
-        // Elementos del DOM
         const loginBtn = document.getElementById('login-btn');
         const userProfileBtn = document.getElementById('user-profile-btn');
         const adminBtn = document.getElementById('admin-btn');
         const logoutBtn = document.getElementById('logout-btn');
         const userName = document.getElementById('userName');
         
-        // Obtener el estado de autenticación actual
+        // estado de autenticacion actual
         const userData = await obtenerUsuario();
         console.log("Datos de usuario:", userData);
         
         if (userData.success && userData.user) {
-            // Usuario autenticado
+            // User
             console.log("Usuario autenticado:", userData.user);
             
-            // Ocultar botón de login
+            // Ocultar login
             if (loginBtn) loginBtn.style.display = 'none';
             
             // Mostrar botones de usuario y logout
             if (userProfileBtn) userProfileBtn.style.display = 'block';
             if (logoutBtn) logoutBtn.style.display = 'block';
             
-            // Actualizar nombre de usuario si está disponible
+            // Actualizar nombre de usuario 
             if (userName && userData.user.nombre) {
                 userName.textContent = userData.user.nombre.split(' ')[0] || 'Usuario';
             }
             
-            // Verificar si el usuario es administrador por su email
+            //  si el usuario es administrador por su email
             if (userData.user.email && ADMIN_EMAILS.includes(userData.user.email)) {
                 console.log("Usuario es administrador:", userData.user.email);
                 if (adminBtn) adminBtn.style.display = 'block';
@@ -405,7 +404,7 @@ async function actualizarUISegunAutenticacion() {
             // Usuario no autenticado
             console.log("Usuario no autenticado");
             
-            // Mostrar botón de login
+            // Mostrar login
             if (loginBtn) loginBtn.style.display = 'block';
             
             // Ocultar botones de usuario, admin y logout
@@ -421,14 +420,6 @@ async function actualizarUISegunAutenticacion() {
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM cargado, configurando interfaz...");
-    
-    // Añadir Bootstrap Icons si no están ya incluidos
-    if (!document.querySelector('link[href*="bootstrap-icons"]')) {
-        const iconLink = document.createElement('link');
-        iconLink.rel = 'stylesheet';
-        iconLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css';
-        document.head.appendChild(iconLink);
-    }
     
     // Configurar el modal de login
     const loginLink = document.querySelector('a[href="#login"]');
@@ -449,11 +440,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Asegurarnos de que se verifique el estado incluso si la página se carga desde caché
+// Asegurarnos de que se verifique el estado desde cache (anotar en el reporte esto)
 window.addEventListener('pageshow', function(event) {
-    // El evento pageshow se dispara incluso cuando la página se carga desde caché
     if (event.persisted) {
-        console.log("Página cargada desde caché, actualizando estado...");
+        console.log("Pagina cargada desde caché, actualizando...");
         actualizarUISegunAutenticacion();
     }
 });
@@ -570,7 +560,7 @@ document.addEventListener('DOMContentLoaded', configurarFormularios);
 function limpiarBackdrop() {
   // Eliminar cualquier backdrop
   document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-  // Quitar clase modal-open del body
+  // Quitar clase  del body
   document.body.classList.remove('modal-open');
   document.body.style.removeProperty('overflow');
   document.body.style.removeProperty('padding-right');
